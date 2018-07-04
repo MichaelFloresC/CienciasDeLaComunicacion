@@ -1,3 +1,11 @@
+<?php
+	if(isset($_POST['submit'])) 
+	{ 
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+	}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -13,7 +21,7 @@
  <h1>Registrate en nuestro fabuloso website:</h1>
  </header> 
 
- <form action="Controlador/registrar-usuario.php" method="post"> 
+ <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"> 
 
 	 <hr />
 	 <h3>Crea una cuenta</h3>
@@ -30,7 +38,9 @@
 	 <br/><br/>
 	 <input type="submit" name="submit" value="Registrarme">
 	 <input type="reset" name="clear" value="Borrar">
-
+	<?php
+		include("../Controlador/registrarUser_controlador.php");
+	?>
  </form>
 
 <hr /><br />

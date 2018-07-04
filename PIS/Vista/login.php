@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST['submit'])) 
 	{ 
-	    $username = $_POST['username'];
+		$username = $_POST['username'];
 		$password = $_POST['password'];
 	}
 ?>
@@ -22,7 +22,6 @@
     <link href="plugins/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="plugins/dist/css/skins/skin-blue-light.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-
     <script src="plugins/jquery/jquery-2.1.4.min.js"></script>
 	<script src="plugins/morris/raphael-min.js"></script>
 	<script src="plugins/morris/morris.js"></script>
@@ -51,16 +50,16 @@
 		<input name="password" type="password" id="password" required class="form-control" placeholder="Password"/>
 	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-	<?php
-		include("Controlador/validar-login.php");
-	?>
+	
 	 <div class="row">
      <div class="col-xs-12">
 	<input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-block btn-flat">
 
 	</div><!-- /.col -->
     </div>
-	
+	<?php
+		include("Controlador/validarLogin_controlador.php");
+	?>
 	</form>
  </div>
 </div>

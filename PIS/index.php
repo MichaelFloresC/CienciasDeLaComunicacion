@@ -9,7 +9,12 @@ error_reporting(0);
 }
 
 
-include "Vista/login.php";
+
+require_once("Modelo/conectar.php");
+require_once("Vista/login.php");
+
+
+
 
 
 ?>
