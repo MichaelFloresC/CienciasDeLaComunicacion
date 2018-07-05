@@ -10,7 +10,7 @@
 	<div class="row"><br><br><br><br><br><br><br>
         <div class="col-md-offset-1">
 			<h4 style="border-bottom: 1px solid #c5c5c5;">
-				<center>Bienvenido al panel de Direccion</center>
+				<center>Bienvenido al panel</center>
 			</h4>
 		</div>
 	</div>
