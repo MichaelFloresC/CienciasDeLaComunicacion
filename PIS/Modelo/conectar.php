@@ -4,7 +4,7 @@
 		public static function conexion(){
 			try {
 			
-				$conexion = new mysqli("localhost","root", "", "curso_mvc");
+				$conexion = new mysqli("localhost","root", "", "bd_epcc");
         		$conexion->query("SET NAMES 'utf8'");
 			}
 			catch(Exception $e){

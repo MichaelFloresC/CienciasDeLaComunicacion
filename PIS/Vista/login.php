@@ -11,60 +11,74 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8">
-    <title>Ciencias de la Comunicacion</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.4 -->
-    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="plugins/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/dist/css/skins/skin-blue-light.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-    <script src="plugins/jquery/jquery-2.1.4.min.js"></script>
-	<script src="plugins/morris/raphael-min.js"></script>
-	<script src="plugins/morris/morris.js"></script>
-  	<link rel="stylesheet" href="plugins/morris/morris.css">
-  	<link rel="stylesheet" href="plugins/morris/example.css">
-    <script src="plugins/jspdf/jspdf.min.js"></script>
-    <script src="plugins/jspdf/jspdf.plugin.autotable.js"></script>
-	<script type="text/javascript" src="plugins/jsqrcode/llqrcode.js"></script>
-	<script type="text/javascript" src="plugins/jsqrcode/webqr.js"></script>
- 	<meta charset = "utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema de Asistencias</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="plugins/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="plugins/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="plugins/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
 </head>
 
 
 <body style="background-color:#dfdfdf;">
-<div class="login-box">
-      <div class="login-logo">
-        <a href="./">BIENESTAR<b>SOCIAL</b></a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<div class="form-group has-feedback">
-			<input name="username" type="text" id="username" required class="form-control" placeholder="Usuario"/>
-			<span class="glyphicon glyphicon-user form-control-feedback"></span>
-	    </div>
-	  <div class="form-group has-feedback">
-		<input name="password" type="password" id="password" required class="form-control" placeholder="Password"/>
-	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-          </div>
-	
-	 <div class="row">
-     <div class="col-xs-12">
-	<input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-block btn-flat">
 
-	</div><!-- /.col -->
+	    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading center">
+                        <h3 class="panel-title center"><center>Sistema de Asistencias</center></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" name="username" type="text" id="username" placeholder="Usuario">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="password" type="password" id="password" placeholder="Password">
+                                </div>
+                                
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input type="submit" name="submit" value="Acceder" class="btn btn-primary btn-block btn-flat">
+                            </fieldset>
+                            	<?php
+								include("Controlador/validarLogin_controlador.php");
+								?>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-	<?php
-		include("Controlador/validarLogin_controlador.php");
-	?>
-	</form>
- </div>
-</div>
 
 
+ <!-- jQuery -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="plugins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="plugins/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="plugins/dist/js/sb-admin-2.js"></script>
 
  </body>
 </html>

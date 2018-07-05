@@ -13,17 +13,17 @@ class usuarios_modelo{
 
 		public function validar($username,$password){
 			
-			 $sql = "SELECT * FROM usuarios WHERE username = '$username'";
+			 $sql = "SELECT * FROM usuario WHERE usuario_cuenta = '$username'";
 			 $result = $this->db->query($sql);
-			 if ($result->num_rows > 0) {     
-			 }
+			// if ($result->num_rows > 0) {     
+			 //}
 	 		$row = $result->fetch_array(MYSQLI_ASSOC);
-			 if (password_verify($password, $row['password'])) { 
+			 if (password_verify($password, $row['usuario_password'])) { 
 	  		 	 $_SESSION['loggedin'] = true;
-	   			 $_SESSION['username'] = $username;
+	   			 $_SESSION['usuario_cuenta'] = $username;
 	   			 $_SESSION['start'] = time();
 	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-	  			 header('Location: http://localhost/PIS/Vista/Home.php');
+	  			 header('Location: http://localhost/PIS/Vista/registroDocente_vista.php');
 	  			
 			 }
 
@@ -37,7 +37,7 @@ class usuarios_modelo{
 	 	public function registrar($username,$password){
 
 			$hash = password_hash($password, PASSWORD_BCRYPT); 
-			$buscarUsuario = "SELECT * FROM usuarios WHERE username = '$username' ";
+			$buscarUsuario = "SELECT * FROM usuario WHERE usuario_cuenta = '$username' ";
 			$result = $this->db->query($buscarUsuario);
 			$count = mysqli_num_rows($result);
 
@@ -49,8 +49,8 @@ class usuarios_modelo{
 			 }
 			 else{
 
-			 $query = "INSERT INTO usuarios (username, password)
-			           VALUES ('$username', '$hash')";
+			 $query = "INSERT INTO usuario (usuario_cuenta, usuario_password, usuario_rol_id, usuario_persona_id)
+			           VALUES ('$username', '$hash','1','1')";
 
 			 if ($this->db->query($query) === TRUE) {
 			 
@@ -68,7 +68,7 @@ class usuarios_modelo{
 	 	}
 
 		public function get_usuarios(){
-			$consulta=$this->db->query("select * from usuarios");
+			$consulta=$this->db->query("select * from usuario");
 			while($fila=$consulta->fetch_assoc()){
 				$this->usuarios[]=$fila;
 			}

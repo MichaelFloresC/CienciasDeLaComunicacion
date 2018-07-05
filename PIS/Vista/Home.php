@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo "<h1 style='text-aligin:center;'>Bienvenido! " . $_SESSION['username']."</h1>";
+echo "<h1 style='text-aligin:center;'>Bienvenido! " . $_SESSION['usuario_cuenta']."</h1>";
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 } else {

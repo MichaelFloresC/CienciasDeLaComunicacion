@@ -7,7 +7,7 @@
     <body>
         <?php
             foreach ($datos as $dato) {
-                echo $dato["username"]."<br/>";
+                echo $dato["usuario_cuenta"]."<br/>";
             }
         ?>
     </body>
