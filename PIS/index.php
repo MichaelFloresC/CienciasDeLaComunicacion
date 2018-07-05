@@ -13,7 +13,7 @@
 require_once("Modelo/conectar.php");
 
 //require_once("Vista/Registro_vista.php");
-require_once("Vista/login.php");
+require_once("Vista/IniciarSesion.php");
 
 
 

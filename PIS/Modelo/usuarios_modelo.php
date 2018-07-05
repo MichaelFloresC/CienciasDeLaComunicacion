@@ -17,13 +17,15 @@ class usuarios_modelo{
 			 $result = $this->db->query($sql);
 			// if ($result->num_rows > 0) {     
 			 //}
+
 	 		$row = $result->fetch_array(MYSQLI_ASSOC);
 			 if (password_verify($password, $row['usuario_password'])) { 
 	  		 	 $_SESSION['loggedin'] = true;
+				 $_SESSION['rol']= $row['usuario_rol_id'];
 	   			 $_SESSION['usuario_cuenta'] = $username;
 	   			 $_SESSION['start'] = time();
 	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-	  			 header('Location: http://localhost/PIS/Vista/registroDocente_vista.php');
+	  			 header('Location: http://localhost/PIS/Vista/bienvenida.php');
 	  			
 			 }
 
