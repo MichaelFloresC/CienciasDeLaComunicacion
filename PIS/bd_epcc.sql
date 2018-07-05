@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2018 a las 02:20:49
--- Versión del servidor: 10.1.29-MariaDB
--- Versión de PHP: 7.2.0
+-- Tiempo de generación: 05-07-2018 a las 22:00:19
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -169,7 +169,9 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`rol_id`, `rol_descripcion`) VALUES
-(1, 'Administrador');
+(1, 'Administrador'),
+(2, 'Alumno'),
+(3, 'Profesor');
 
 -- --------------------------------------------------------
 
@@ -220,7 +222,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`) VALUES
 (2, 'luis', '$2y$10$zWVCuEica0WPxqqTHn7Q2.yKYBBHOFXqcAZyP3/b8mGYGmuugLx7G', 1, 1),
-(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1);
+(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1),
+(4, 'alumno', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 2, 1),
+(6, 'docente', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -371,7 +375,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_libro`
@@ -389,7 +393,7 @@ ALTER TABLE `tipo_persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
