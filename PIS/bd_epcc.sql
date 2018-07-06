@@ -497,6 +497,29 @@ ALTER TABLE `prestamo`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_usuario__rol` FOREIGN KEY (`usuario_rol_id`) REFERENCES `rol` (`rol_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuario_alumno` FOREIGN KEY (`usuario_persona_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  
+
+CREATE TABLE `bd_epcc`.`comentarios_docente` (
+  `comentarios_docente_id` INT NOT NULL AUTO_INCREMENT,
+  `comentarios_docente_docente_id` INT NOT NULL,
+  `comentarios_docente_alumno_id` INT NOT NULL,
+  `comentarios_docente_comentario` LONGTEXT NOT NULL,
+  `comentarios_docente_fecha` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`comentarios_docente_id`),
+  UNIQUE INDEX `comentarios_docente_id_UNIQUE` (`comentarios_docente_id` ASC),
+  INDEX `fk_comentarios_docente_idx` (`comentarios_docente_docente_id` ASC),
+  INDEX `fk_comentarios_alumno_idx` (`comentarios_docente_alumno_id` ASC),
+  CONSTRAINT `fk_comentarios_docente`
+    FOREIGN KEY (`comentarios_docente_docente_id`)
+    REFERENCES `bd_epcc`.`persona` (`persona_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comentarios_alumno`
+    FOREIGN KEY (`comentarios_docente_alumno_id`)
+    REFERENCES `bd_epcc`.`persona` (`persona_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
