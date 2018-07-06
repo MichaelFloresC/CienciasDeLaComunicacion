@@ -89,4 +89,34 @@ class AlumnoController{
         $this->model->Eliminar($_REQUEST['persona_id']);
         header('Location: ../Vista/alumnoVista.php');
     }
+
+    public function GuardarArchivo(){
+        $pvd = new alumno();
+
+        $tipo = $_FILES['archivo']['type'];
+        $tamanio = $_FILES['archivo']['size'];
+        $archivotmp = $_FILES['archivo']['tmp_name'];
+        $lineas = file($archivotmp);
+        $i = 0;
+        foreach ($lineas as $linea_num => $linea) { 
+            if($i != 0) { 
+                $datos = explode(",",$linea);
+                $pvd->persona_nombres = utf8_encode($datos[0]);
+                $pvd->persona_apellido1 = utf8_encode($datos[1]);
+                $pvd->persona_apellido2 = utf8_encode($datos[2]);
+                $pvd->persona_tipo_id = 1;
+                $pvd->persona_cui = $datos[4];
+                $pvd->persona_direccion = utf8_encode($datos[5]);
+                $pvd->persona_email = utf8_encode($datos[6]);
+                $pvd->persona_telefono = $datos[7];
+                $pvd->persona_estado = $datos[8];
+
+                $this->model->Registrar($pvd);
+            }
+            $i++;
+        }
+
+        header('Location: ../Vista/alumnoVista.php');
+    }
+
 }
