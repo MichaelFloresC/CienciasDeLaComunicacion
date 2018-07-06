@@ -519,6 +519,23 @@ CREATE TABLE `bd_epcc`.`comentarios_docente` (
     REFERENCES `bd_epcc`.`persona` (`persona_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+	
+
+ALTER TABLE `bd_epcc`.`nota_promedio` 
+DROP FOREIGN KEY `fk_nota_promedio_persona`;
+ALTER TABLE `bd_epcc`.`nota_promedio` 
+CHANGE COLUMN `nota_promedio_id` `nota_promedio_id` INT(11) NOT NULL AUTO_INCREMENT ,
+CHANGE COLUMN `nota_promedio_alumno_id` `nota_promedio_alumno_id` INT(11) NOT NULL ,
+CHANGE COLUMN `nota_promedio_semestre` `nota_promedio_semestre` INT(11) NOT NULL ,
+CHANGE COLUMN `nota_promedio_nota` `nota_promedio_nota` VARCHAR(45) NOT NULL ;
+ALTER TABLE `bd_epcc`.`nota_promedio` 
+ADD CONSTRAINT `fk_nota_promedio_persona`
+  FOREIGN KEY (`nota_promedio_alumno_id`)
+  REFERENCES `bd_epcc`.`persona` (`persona_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
 
 COMMIT;
 
