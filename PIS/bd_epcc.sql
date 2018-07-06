@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2018 a las 06:25:20
+-- Tiempo de generación: 06-07-2018 a las 07:48:41
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -120,7 +120,8 @@ INSERT INTO `nota_promedio` (`nota_promedio_id`, `nota_promedio_alumno_id`, `not
 (3, NULL, 2, '2'),
 (4, NULL, 2, '2'),
 (7, 17, 12, '12'),
-(8, 17, 2, '3');
+(8, 17, 2, '3'),
+(9, 16, 45, '45');
 
 -- --------------------------------------------------------
 
@@ -154,8 +155,21 @@ INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `pe
 (13, 'wertyu', 'ertyuio', 'ertyuio', 2, 'rtyuiop', NULL, 'rtyuiop', 'rtyuiop', '222', NULL, NULL, 1),
 (14, 'cvbnm', 'cvbnm,', 'cvbnm,', 1, NULL, '.vbnm,', ',vbnm', 'vbnm', '2333', NULL, NULL, 1),
 (15, 'cvbnm', 'vbnm,', 'vbnm,', 3, NULL, NULL, 'vbn', 'vbnm,', '99999', NULL, NULL, 1),
-(16, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, 'rtyui', 'irtyu', 'rtyu', 'isdd', NULL, NULL, 0),
-(17, 'Luis Alberto', 'ertyu', 'fghj', 1, NULL, 'fghj', 'jkfghjk', 'kfgh', 'lghjkl', NULL, NULL, 0);
+(16, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, '20123677', 'irtyu', 'rtyu', 'isdd', NULL, NULL, 1),
+(17, 'Luis Alberto', 'ertyu', 'fghj', 1, NULL, 'fghj', 'jkfghjk', 'kfgh', 'lghjkl', NULL, NULL, 0),
+(18, 'Michael', 'Flores', 'Conislla', 1, NULL, '2012', 'ertyuiop', 'ljk', 'r34567', NULL, NULL, 0),
+(19, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, '20123677', 'Av Arequipa', 'ljimenezgo@unsa.edu.pe', '992729679', NULL, NULL, 1),
+(20, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
+(21, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
+(22, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
+(23, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
+(24, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
+(25, 'Luis Alberto', 'qwertyui', 'sdfghjk', 1, NULL, ' cvbnm', 'rtyuio', 'rtgyuio', 'ghjkl', NULL, NULL, 0),
+(26, 'Luis Alberto', 'qwertyui', 'sdfghjk', 1, NULL, ' cvbnm', 'rtyuio', 'rtgyuio', 'ghjkl', NULL, NULL, 0),
+(27, 'bbb', 'bbbb', 'bbb', 1, NULL, 'bbb', 'bbbb', 'bbb', 'bbb', NULL, NULL, 0),
+(28, 'hola', 'hola', 'hola', 3, NULL, NULL, 'hola', 'hola', 'hola', NULL, NULL, 0),
+(29, 'lolo', 'lolo', 'lolo', 1, NULL, NULL, 'lolo', 'lolo', 'lolo', NULL, NULL, 1),
+(30, 'popo', 'popo', 'popo', 2, NULL, 'popo', 'popo', 'popo', 'popo', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -219,9 +233,9 @@ CREATE TABLE `tipo_persona` (
 --
 
 INSERT INTO `tipo_persona` (`tipo_persona_id`, `tipo_persona_dsc`) VALUES
-(1, 'Alumno'),
-(2, 'Profesor'),
-(3, 'Administrador');
+(1, 'Administrador'),
+(2, 'Alumno'),
+(3, 'Profesor');
 
 -- --------------------------------------------------------
 
@@ -234,18 +248,23 @@ CREATE TABLE `usuario` (
   `usuario_cuenta` varchar(20) NOT NULL,
   `usuario_password` varchar(100) NOT NULL,
   `usuario_rol_id` int(11) NOT NULL,
-  `usuario_persona_id` int(11) NOT NULL
+  `usuario_persona_id` int(11) NOT NULL,
+  `usuario_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`) VALUES
-(2, 'luis', '$2y$10$zWVCuEica0WPxqqTHn7Q2.yKYBBHOFXqcAZyP3/b8mGYGmuugLx7G', 1, 1),
-(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1),
-(4, 'alumno', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 2, 1),
-(6, 'docente', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 3, 1);
+INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`, `usuario_estado`) VALUES
+(2, 'luis', '$2y$10$zWVCuEica0WPxqqTHn7Q2.yKYBBHOFXqcAZyP3/b8mGYGmuugLx7G', 1, 1, 0),
+(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1, 0),
+(4, 'alumno', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 2, 1, 0),
+(6, 'docente', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 3, 1, 0),
+(9, 'bbb', '$2y$10$O94jgXbM5RMi0QFJA5d8qu31RjOa/aUCNdFM.OQ0uKYOEpk76gAhS', 1, 1, 0),
+(10, 'hola', '$2y$10$GRSPmlmVIdJICvUf2QGrvei4XcU1sL3pgqdiypA2tjGIMQilr80Uq', 3, 1, 0),
+(11, 'lolo', '$2y$10$yiP9rXSoTk/rpbwH04w/t.FQOJ3ZDO0Ald2fHEM3OSxXQhyuCjZZS', 1, 1, 0),
+(12, 'popo', '$2y$10$Q2BbZsK4qBBnl16eAeETvegX8LC.XK8EhDadftruXQ2RugU6z4Squ', 2, 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -384,13 +403,13 @@ ALTER TABLE `malla_curricular`
 -- AUTO_INCREMENT de la tabla `nota_promedio`
 --
 ALTER TABLE `nota_promedio`
-  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
@@ -420,7 +439,7 @@ ALTER TABLE `tipo_persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

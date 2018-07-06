@@ -30,7 +30,7 @@ class administrador
 		try
 		{
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 3) AND (persona_estado = 0)");
+			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 1) AND (persona_estado = 0)");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		}
@@ -119,6 +119,31 @@ class administrador
                         $data->persona_email,
                         $data->persona_telefono,
                         $data->persona_estado
+                )
+			);
+		} catch (Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	
+	//Método que registra un nuevo alumno a la tabla.
+	 function RegistrarU(usuario $data)
+	{
+		try
+		{
+			//Sentencia SQL.
+			$sql = "INSERT INTO usuario (usuario_cuenta,usuario_password,usuario_rol_id,usuario_persona_id,usuario_estado)
+		        VALUES (?, ?, ?, ?, ?)";
+
+			$this->pdo->prepare($sql)
+		     ->execute(
+				array(
+						$data->usuario_cuenta,
+                        $data->usuario_password,
+                        $data->usuario_rol_id,
+                        $data->usuario_persona_id,
+						$data->usuario_estado
                 )
 			);
 		} catch (Exception $e)

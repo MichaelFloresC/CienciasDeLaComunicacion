@@ -35,7 +35,8 @@
                                 <div class="tab-pane fade in active" id="Formulario">
 									<form role="form" id="frm-alumno" action="?c=alumno&a=Guardar" method="post" >
                                         <input type="hidden" name="persona_id" value="<?php echo $pvd->persona_id; ?>" />
-                                        <input type="hidden" name="persona_tipo_id" value="1" />
+                                        <input type="hidden" name="usuario_id" value="<?php echo $pc2->usuario_id; ?>" />
+                                        <input type="hidden" name="persona_tipo_id" value="2" />
                                         <input type="hidden" name="persona_estado" value="0" />
 
 										<div class="form-group col-lg-12">
