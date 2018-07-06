@@ -43,7 +43,7 @@
                                             <label>Alumno</label>
 											<select name= "nota_promedio_alumno_id" class="selectpicker" data-live-search="true">
 												<?php foreach($this->model->Listar() as $r): ?>
-													<option value="<?php echo $r->persona_id; ?>"  data-tokens="<?php echo $r->persona_cui; ?>"><?php echo $r->persona_cui; ?></option>
+													<option value="<?php echo $r->persona_id; ?>"  data-tokens="<?php echo $r->persona_cui; ?> <?php echo $r->persona_apellido1; ?> <?php echo $r->persona_nombres; ?>"><?php echo $r->persona_cui; ?> <?php echo $r->persona_apellido1; ?> <?php echo $r->persona_nombres; ?></option>
 												<?php endforeach; ?> 
 											</select>
 											<br><br>
