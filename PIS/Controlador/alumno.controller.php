@@ -1,6 +1,7 @@
 <?php
 //Se incluye el modelo donde conectará el controlador.
 require_once '../Modelo/alumno.php';
+require_once '../Modelo/usuario.php';
 
 class AlumnoController{
 
@@ -28,7 +29,20 @@ class AlumnoController{
 
         //Llamado de las vistas.
         require_once '../Vista/editar-alumnos.php';
-  }
+	}
+	
+	//Llamado a la vista alumno-perfil
+    public function Perfil(){
+        $pvd = new alumno();
+
+        //Se obtienen los datos del alumno.
+        if(isset($_REQUEST['persona_id'])){
+            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
+        }
+
+        //Llamado de las vistas.
+        require_once '../Vista/perfil-alumno.php';
+	}
 
     //Llamado a la vista alumno-nuevo
     public function Nuevo(){
@@ -42,7 +56,8 @@ class AlumnoController{
     //Método que registrar al modelo un nuevo proveedor.
     public function Guardar(){
         $pvd = new alumno();
-
+		$pc2 = new usuario();
+		$hash = password_hash($_REQUEST['persona_cui'], PASSWORD_BCRYPT);
         //Captura de los datos del formulario (vista).
         $pvd->persona_id = $_REQUEST['persona_id'];
         $pvd->persona_nombres = $_REQUEST['persona_nombres'];
@@ -54,9 +69,16 @@ class AlumnoController{
         $pvd->persona_email = $_REQUEST['persona_email'];
         $pvd->persona_telefono = $_REQUEST['persona_telefono'];
         $pvd->persona_estado = $_REQUEST['persona_estado'];
-
+		$pc2->usuario_id = $_REQUEST['usuario_id'];
+        $pc2->usuario_cuenta = $_REQUEST['persona_cui'];
+        $pc2->usuario_password = $hash;
+        $pc2->usuario_rol_id = $_REQUEST['persona_tipo_id'];
+		$pc2->usuario_persona_id = 1;
+        $pc2->usuario_estado = $_REQUEST['persona_estado'];
+        
         //Registro al modelo alumno.
         $this->model->Registrar($pvd);
+        $this->model->RegistrarU($pc2);
 
         //header() es usado para enviar encabezados HTTP sin formato.
         //"Location:" No solamente envía el encabezado al navegador, sino que

@@ -10,6 +10,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../plugins/dist/css/bootstrap-select.css">
 
     <!-- MetisMenu CSS -->
     <link href="../plugins/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">

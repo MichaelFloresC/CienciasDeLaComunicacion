@@ -3,6 +3,81 @@
 <html>
 <?php include("head.php"); ?>
 <body>
+<?php
+if($_SESSION['rol']==2){
+?>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="bienvenida.php">Bienestar Social</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <?php
+							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+						?>
+						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="perfil-alumno.php"><i class="fa fa-user fa-fw"></i> Perfil</a>
+                        </li>
+                        <li><a href="cambio-contrasena.php"><i class="fa fa-gear fa-fw"></i> Configuración</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+						<li>
+                            <a href="perfil-alumno.php"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
+                        </li>
+											
+						
+						<!-- /Relaciones públicas y dirección -->                       
+						<li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="lista-malla.php">Malla</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<!-- /Malla Curricular -->		
+					
+						
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.Barra Desplegable Izquierda -->
+        </nav>
+		<!-- /.Barra Alumno -->
+<?php
+}
+else{
+?>
+
+
+
 
     <div id="wrapper">
 	<?php include("panel.php"); ?>
@@ -12,7 +87,7 @@
 							<br>
 							
                             <div class="panel-heading">
-                                <h3 class="panel-title">Luis Jimenez <button type="button" class="btn btn-primary btn-xs">Generar Reporte</button></h3>
+                                <h3 class="panel-title"><?php echo $pvd->persona_nombres; ?> <?php echo $pvd->persona_apellido1; ?> <button type="button" class="btn btn-primary btn-xs">Generar Reporte</button></h3>
 								
                             </div>
 							<div class="alert alert-success">
@@ -24,19 +99,19 @@
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr><td>CUI:</td>
-                                                    <td>20123677</td>
+                                                    <td><?php echo $pvd->persona_cui; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Dirección</td>
-                                                    <td>Cerro Colorado, Jr Piura 301</td>
+                                                    <td><?php echo $pvd->persona_direccion; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Correo</td>
-                                                    <td><a href="mailto:info@support.com">ljimenezgo@unsa.edu.pe</a></td>
+                                                    <td><a href="mailto:info@support.com"><?php echo $pvd->persona_email; ?></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Telefono</td>
-                                                    <td>992729679</td>
+                                                    <td><?php echo $pvd->persona_telefono; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -109,6 +184,11 @@
         <!-- /#page-wrapper -->
 
     </div>
+
+
+<?php
+}
+?>
     <!-- /#wrapper -->
 	<?php include("scripts.php"); ?>
 </body>
