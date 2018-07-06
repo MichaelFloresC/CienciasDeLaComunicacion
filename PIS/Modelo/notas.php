@@ -26,7 +26,7 @@ class notas
 		{
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 1) AND (persona_estado = 0)");
+			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 2) AND (persona_estado = 0)");
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
