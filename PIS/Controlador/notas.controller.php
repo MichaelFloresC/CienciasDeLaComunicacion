@@ -92,4 +92,28 @@ class NotasController{
         $this->model->Eliminar($_REQUEST['nota_promedio_id']);
         header('Location: ../Vista/notasVista.php');
     }
+
+    public function GuardarArchivo(){
+        $pvd = new notas();
+
+        $tipo = $_FILES['archivo']['type'];
+        $tamanio = $_FILES['archivo']['size'];
+        $archivotmp = $_FILES['archivo']['tmp_name'];
+        $lineas = file($archivotmp);
+        $i = 0;
+        foreach ($lineas as $linea_num => $linea) { 
+            if($i != 0) { 
+                $datos = explode(",",$linea);
+                $pvd->nota_promedio_alumno_id = $datos[0];
+                $pvd->nota_promedio_semestre = $datos[1];
+                $pvd->nota_promedio_nota = $datos[2];
+
+                $this->model->Registrar($pvd);
+            }
+            $i++;
+        }
+
+        header('Location: ../Vista/notasVista.php?c=notas&a=Nuevo');
+    }
+
 }

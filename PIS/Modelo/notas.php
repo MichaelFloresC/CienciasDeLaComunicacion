@@ -93,13 +93,13 @@ class notas
 	{
 		try
 		{
-		$sql = "INSERT INTO nota_promedio (nota_promedio_id,nota_promedio_alumno_id,nota_promedio_semestre,nota_promedio_nota)
-		        VALUES (?, ?, ?, ?)";
+		$sql = "INSERT INTO nota_promedio (nota_promedio_alumno_id,nota_promedio_semestre,nota_promedio_nota)
+		        VALUES (?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
-                    $data->nota_promedio_id,
+                    //$data->nota_promedio_id,
                     $data->nota_promedio_alumno_id,
                     $data->nota_promedio_semestre,
                     $data->nota_promedio_nota
