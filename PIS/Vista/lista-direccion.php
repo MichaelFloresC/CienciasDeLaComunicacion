@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("head.php"); ?>
+
 <body>
 
     <div id="wrapper">
-		<?php include("panel.php"); ?>	
+
+		<?php include("panel.php"); ?>		
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -18,7 +20,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Personal Registrado
+                            Administradores Registrados
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -26,39 +28,36 @@
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
+                                            <th>Apellidos y Nombres</th>
+                                            <th>Telefono</th>
+                                            <th>Email</th>
+                                            
+											<?php
+												if($_SESSION['rol']==1){
+											?>
+											<th>Editar</th>
+											<th>Eliminar</th>
+											<?php
+												}
+											?>
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php foreach($this->model->Listar() as $r): ?>
                                         <tr class="odd gradeX">
-                                            <td>Luis</td>
-                                            <td>Jimenez Gonzales</td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-warning">Actualizar</button></td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-danger">Eliminar</button></td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>Michael Mario</td>
-                                            <td>Flores Conislla</td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-warning">Actualizar</button></td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-danger">Eliminar</button></td>
-                                        </tr>
-                                        <tr class="odd gradeA">
-                                            <td>Elisabeth</td>
-                                            <td>Farfán Choquehuanca</td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-warning">Actualizar</button></td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-danger">Eliminar</button></td>
-                                        </tr>
-                                        <tr class="even gradeA">
-                                            <td>Diego</td>
-                                            <td>Maraza Itomacedo</td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-warning">Actualizar</button></td>
-                                            <td class="center"><button type="button" class="btn btn-outline btn-danger">Eliminar</button></td>
-                                        </tr>
-                                        
-                                        
+											<td><?php echo $r->persona_apellido1; ?> <?php echo $r->persona_apellido2; ?> <?php echo $r->persona_nombres; ?></td>
+											<td><?php echo $r->persona_telefono; ?></td>
+											<td><?php echo $r->persona_email; ?></td>
+											<?php
+												if($_SESSION['rol']==1){
+											?>
+											<td class="center"><a href="?c=administrador&a=Crud&persona_id=<?php echo $r->persona_id; ?>">Editar</a></td>
+											<td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=administrador&a=Eliminar&persona_id=<?php echo $r->persona_id; ?>">Eliminar</a></td>
+											<?php
+												}
+											?>
+                                        </tr>                                        
+                                    <?php endforeach; ?>    
                                     </tbody>
                                 </table>
                             </div>
@@ -78,7 +77,6 @@
 
     </div>
     <!-- /#wrapper -->
-
 <?php include("scripts.php"); ?>
 
 </body>

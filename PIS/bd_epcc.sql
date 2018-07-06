@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2018 a las 22:00:19
+-- Tiempo de generación: 06-07-2018 a las 04:17:32
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -127,16 +127,21 @@ CREATE TABLE `persona` (
   `persona_direccion` varchar(50) DEFAULT NULL,
   `persona_email` varchar(50) DEFAULT NULL,
   `persona_telefono` varchar(12) DEFAULT NULL,
-  `persona_malla` int(11) NOT NULL,
-  `persona_seccion` varchar(10) DEFAULT NULL
+  `persona_malla` int(11) DEFAULT NULL,
+  `persona_seccion` varchar(10) DEFAULT NULL,
+  `persona_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `persona_apellido2`, `persona_tipo_id`, `persona_dni`, `persona_cui`, `persona_direccion`, `persona_email`, `persona_telefono`, `persona_malla`, `persona_seccion`) VALUES
-(1, 'Luis', 'Jimenez', 'Gonzales', 1, '47695825', '20120867', 'Ultimo paradero del Viento', 'luisjimgon@unsa.edu.pe', '977645852', 1, 'A');
+INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `persona_apellido2`, `persona_tipo_id`, `persona_dni`, `persona_cui`, `persona_direccion`, `persona_email`, `persona_telefono`, `persona_malla`, `persona_seccion`, `persona_estado`) VALUES
+(1, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, '47695825', '20120867', 'Av Arequipa', 'luisjimgon@unsa.edu.pe', '977645852', 1, 'A', 1),
+(12, 'dfghjk', 'dfghjkl', 'fghjkl', 1, NULL, 'fghjklÃ±', 'fghjklÃ±', 'fghjklÃ±', 'ghjkl', NULL, NULL, 1),
+(13, 'wertyu', 'ertyuio', 'ertyuio', 2, 'rtyuiop', NULL, 'rtyuiop', 'rtyuiop', '222', NULL, NULL, 1),
+(14, 'cvbnm', 'cvbnm,', 'cvbnm,', 1, NULL, '.vbnm,', ',vbnm', 'vbnm', '2333', NULL, NULL, 1),
+(15, 'cvbnm', 'vbnm,', 'vbnm,', 3, NULL, NULL, 'vbn', 'vbnm,', '99999', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +205,9 @@ CREATE TABLE `tipo_persona` (
 --
 
 INSERT INTO `tipo_persona` (`tipo_persona_id`, `tipo_persona_dsc`) VALUES
-(1, 'Alumno');
+(1, 'Alumno'),
+(2, 'Profesor'),
+(3, 'Administrador');
 
 -- --------------------------------------------------------
 
@@ -363,7 +370,7 @@ ALTER TABLE `malla_curricular`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
@@ -387,7 +394,7 @@ ALTER TABLE `tipo_libro`
 -- AUTO_INCREMENT de la tabla `tipo_persona`
 --
 ALTER TABLE `tipo_persona`
-  MODIFY `tipo_persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tipo_persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

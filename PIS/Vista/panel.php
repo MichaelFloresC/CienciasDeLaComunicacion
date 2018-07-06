@@ -39,10 +39,10 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Docentes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="agregar-profesores.php">Registro de Docentes</a>
+                                    <a href="profesorVista.php?c=profesor&a=Nuevo">Registro de Docentes</a>
                                 </li>
                                 <li>
-                                    <a href="lista-profesores.php">Lista de Docentes</a>
+                                    <a href="profesorVista.php">Lista de Docentes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -52,10 +52,10 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Alumnos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="agregar-alumnos.php">Registro de Alumnos</a>
+                                    <a href="alumnoVista.php?c=alumno&a=Nuevo">Registro de Alumnos</a>
                                 </li>
                                 <li>
-                                    <a href="lista-alumnos.php">Lista de Alumnos</a>
+                                    <a href="alumnoVista.php">Lista de Alumnos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -65,10 +65,10 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> R. P. y Dirección<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="agregar-direccion.php">Registro de Personal</a>
+                                    <a href="administradorVista.php?c=administrador&a=Nuevo">Registro de Personal</a>
                                 </li>
                                 <li>
-                                    <a href="lista-direccion.php">Lista de Personal</a>
+                                    <a href="administradorVista.php">Lista de Personal</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -213,7 +213,7 @@ if($_SESSION['rol']==3){
                     <ul class="nav" id="side-menu">
 						<!-- /Alumnos -->
 						<li>
-                            <a href="lista-alumnos.php"><i class="fa fa-wrench fa-fw"></i> Alumnos</a>
+                            <a href="alumnoVista.php"><i class="fa fa-wrench fa-fw"></i> Alumnos</a>
                         </li>
 						
 						<!-- /Relaciones públicas y dirección -->                       

@@ -2,6 +2,7 @@
 
 	class conectar{
 		public static function conexion(){
+			
 			try {
 			
 				$conexion = new mysqli("localhost","root", "", "bd_epcc");
