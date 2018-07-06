@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2018 a las 04:17:32
+-- Tiempo de generación: 06-07-2018 a las 06:25:20
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -110,6 +110,18 @@ CREATE TABLE `nota_promedio` (
   `nota_promedio_nota` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `nota_promedio`
+--
+
+INSERT INTO `nota_promedio` (`nota_promedio_id`, `nota_promedio_alumno_id`, `nota_promedio_semestre`, `nota_promedio_nota`) VALUES
+(1, 16, 13, '12'),
+(2, NULL, 1, '1'),
+(3, NULL, 2, '2'),
+(4, NULL, 2, '2'),
+(7, 17, 12, '12'),
+(8, 17, 2, '3');
+
 -- --------------------------------------------------------
 
 --
@@ -141,7 +153,9 @@ INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `pe
 (12, 'dfghjk', 'dfghjkl', 'fghjkl', 1, NULL, 'fghjklÃ±', 'fghjklÃ±', 'fghjklÃ±', 'ghjkl', NULL, NULL, 1),
 (13, 'wertyu', 'ertyuio', 'ertyuio', 2, 'rtyuiop', NULL, 'rtyuiop', 'rtyuiop', '222', NULL, NULL, 1),
 (14, 'cvbnm', 'cvbnm,', 'cvbnm,', 1, NULL, '.vbnm,', ',vbnm', 'vbnm', '2333', NULL, NULL, 1),
-(15, 'cvbnm', 'vbnm,', 'vbnm,', 3, NULL, NULL, 'vbn', 'vbnm,', '99999', NULL, NULL, 1);
+(15, 'cvbnm', 'vbnm,', 'vbnm,', 3, NULL, NULL, 'vbn', 'vbnm,', '99999', NULL, NULL, 1),
+(16, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, 'rtyui', 'irtyu', 'rtyu', 'isdd', NULL, NULL, 0),
+(17, 'Luis Alberto', 'ertyu', 'fghj', 1, NULL, 'fghj', 'jkfghjk', 'kfgh', 'lghjkl', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -367,10 +381,16 @@ ALTER TABLE `malla_curricular`
   MODIFY `malla_curricular_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `nota_promedio`
+--
+ALTER TABLE `nota_promedio`
+  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`

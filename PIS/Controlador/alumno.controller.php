@@ -28,7 +28,20 @@ class AlumnoController{
 
         //Llamado de las vistas.
         require_once '../Vista/editar-alumnos.php';
-  }
+	}
+	
+	//Llamado a la vista alumno-perfil
+    public function Perfil(){
+        $pvd = new alumno();
+
+        //Se obtienen los datos del alumno.
+        if(isset($_REQUEST['persona_id'])){
+            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
+        }
+
+        //Llamado de las vistas.
+        require_once '../Vista/perfil-alumno.php';
+	}
 
     //Llamado a la vista alumno-nuevo
     public function Nuevo(){

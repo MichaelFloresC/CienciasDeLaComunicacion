@@ -59,7 +59,7 @@
 											<?php
 												}
 											?>
-											<td class="center"><a href="Direccion-Mantenimiento-profile.html" class="btn btn-outline btn-danger">Perfil</a></td>
+											<td class="center"><a href="?c=alumno&a=Perfil&persona_id=<?php echo $r->persona_id; ?>">Ver</a></td>
                                         </tr>                                        
                                     <?php endforeach; ?>    
                                     </tbody>

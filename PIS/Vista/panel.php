@@ -17,7 +17,10 @@ if($_SESSION['rol']==1){
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <?php
+							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+						?>
+						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="cambio-contrasena.php"><i class="fa fa-gear fa-fw"></i> Configuración</a>
@@ -97,6 +100,15 @@ if($_SESSION['rol']==1){
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+						<li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Notas<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="notasVista.php?c=notas&a=Nuevo">Agregar Notas</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
 						<!-- /Usuarios -->
 						
                     </ul>
@@ -127,7 +139,10 @@ if($_SESSION['rol']==2){
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <?php
+							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+						?>
+						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="perfil-alumno.php"><i class="fa fa-user fa-fw"></i> Perfil</a>
@@ -193,7 +208,10 @@ if($_SESSION['rol']==3){
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <?php
+							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+						?>
+						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="cambio-contrasena.php"><i class="fa fa-gear fa-fw"></i> Configuración</a>
