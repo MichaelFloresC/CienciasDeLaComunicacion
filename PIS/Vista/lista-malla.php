@@ -105,7 +105,7 @@
                                         </tr>
                                         <tr class="even gradeA">
                                             <td>Cálculo en I Variable</td>
-                                            <td>2483</td>
+                                            <td>9999</td>
                                             <td>2684</td>
                                             <td>I</td>
                                         </tr>

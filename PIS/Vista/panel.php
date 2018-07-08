@@ -84,7 +84,7 @@ if($_SESSION['rol']==1){
                                     <a href="lista-malla.php">Lista</a>
                                 </li>
 								<li>
-                                    <a href="agregar-malla.php">Subir Nuevo</a>
+                                    <a href="mallaVista.php?c=malla&a=Nuevo">Subir Nuevo</a>
                                 </li>
 
                             </ul>
