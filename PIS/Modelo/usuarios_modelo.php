@@ -36,6 +36,32 @@ class usuarios_modelo{
 	 		mysqli_close($this->db);
 	 	}
 
+	 	public function validarLogin($username,$password){
+			
+			 $sql = "SELECT * FROM usuario WHERE usuario_cuenta = '$username'";
+			 $result = $this->db->query($sql);
+			// if ($result->num_rows > 0) {     
+			 //}
+
+	 		$row = $result->fetch_array(MYSQLI_ASSOC);
+			 if (password_verify($password, $row['usuario_password'])) { 
+	  		 	$_SESSION['loggedin'] = true;
+				 	$_SESSION['rol']= $row['usuario_rol_id'];
+	   			$_SESSION['usuario_cuenta'] = $username;
+	   			$_SESSION['start'] = time();
+	  			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+	  			// header('Location: Vista/bienvenida.php');
+	  			echo "Inicio de sesión correcto.";
+	  			
+			 }
+
+			 else { 
+	  			echo "Usuario o contraseña incorrectos.";
+	  			
+	 		}
+	 		mysqli_close($this->db);
+	 	}
+
 	 	public function registrar($username,$password){
 
 			$hash = password_hash($password, PASSWORD_BCRYPT); 

@@ -51,7 +51,7 @@ class RegistroAlumnoTest extends PHPUnit_Framework_TestCase
     $pvd->persona_estado = $this->estadoActivo;
     
     $rpta = $this->model->Registrar($pvd);
-    echo $rpta;
+    echo 'Id de alumno creado: '.$rpta.'\n';
     
     // $this->assertInternalType("int", $rpta);
     $this->assertNotNull($rpta);
