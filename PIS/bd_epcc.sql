@@ -519,7 +519,7 @@ CREATE TABLE `bd_epcc`.`comentarios_docente` (
     REFERENCES `bd_epcc`.`persona` (`persona_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-	
+  
 
 ALTER TABLE `bd_epcc`.`nota_promedio` 
 DROP FOREIGN KEY `fk_nota_promedio_persona`;

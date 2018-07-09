@@ -150,6 +150,7 @@ class alumno
                         $data->persona_estado
                 )
 			);
+		  return $this->pdo->lastInsertId();
 		} catch (Exception $e)
 		{
 			die($e->getMessage());

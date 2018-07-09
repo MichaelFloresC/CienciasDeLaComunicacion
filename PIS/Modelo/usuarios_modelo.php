@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class usuarios_modelo{
 
@@ -25,7 +25,7 @@ class usuarios_modelo{
 	   			 $_SESSION['usuario_cuenta'] = $username;
 	   			 $_SESSION['start'] = time();
 	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-	  			 header('Location: http://localhost/PIS/Vista/bienvenida.php');
+	  			 header('Location: Vista/bienvenida.php');
 	  			
 			 }
 
