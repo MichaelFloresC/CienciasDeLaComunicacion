@@ -30,7 +30,7 @@ class AlumnoController{
         //Llamado de las vistas.
         require_once '../Vista/editar-alumnos.php';
 	}
-	
+
 	//Llamado a la vista alumno-perfil
     public function Perfil(){
         $pvd = new alumno();
@@ -126,7 +126,7 @@ class AlumnoController{
                 $pvd->persona_nombres = utf8_encode($datos[0]);
                 $pvd->persona_apellido1 = utf8_encode($datos[1]);
                 $pvd->persona_apellido2 = utf8_encode($datos[2]);
-                $pvd->persona_tipo_id = 1;
+                $pvd->persona_tipo_id = 2;
                 $pvd->persona_cui = $datos[4];
                 $pvd->persona_direccion = utf8_encode($datos[5]);
                 $pvd->persona_email = utf8_encode($datos[6]);

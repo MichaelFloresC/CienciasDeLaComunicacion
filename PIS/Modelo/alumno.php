@@ -14,6 +14,9 @@ class alumno
 	public $persona_direccion;
 	public $persona_email;
 	public $persona_telefono;
+	public $comentarios_docente_docente_id;
+	public $comentarios_docente_comentario;
+	public $comentarios_docente_fecha;
 	
 	
 
@@ -52,6 +55,26 @@ class alumno
 		}
 	}
 
+		public function Listare($comentarios_docente_alumno_id)
+	{
+		try
+		{
+			$result = array();
+			//Sentencia SQL para selección de datos.
+			$stm = $this->pdo->prepare("SELECT * from  comentarios_docente JOIN persona on comentarios_docente.comentarios_docente_alumno_id = persona.persona_id
+										WHERE comentarios_docente.comentarios_docente_alumno_id={$comentarios_docente_alumno_id}");
+			//Ejecución de la sentencia SQL.
+			$stm->execute();
+			//fetchAll — Devuelve un array que contiene todas las filas del conjunto
+			//de resultados
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			//Obtener mensaje de error.
+			die($e->getMessage());
+		}
+	}
 	//Este método obtiene los datos del alumno a partir del nit
 	//utilizando SQL.
 	public function Obtener($persona_id)
