@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2018 a las 07:48:41
+-- Tiempo de generación: 13-07-2018 a las 01:50:05
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -33,6 +33,20 @@ CREATE TABLE `alumno_curso` (
   `alumno_cursoc_alumno_id` int(11) NOT NULL,
   `alumno_curso_curso_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios_docente`
+--
+
+CREATE TABLE `comentarios_docente` (
+  `comentarios_docente_id` int(11) NOT NULL,
+  `comentarios_docente_docente_id` int(11) NOT NULL,
+  `comentarios_docente_alumno_id` int(11) NOT NULL,
+  `comentarios_docente_comentario` longtext NOT NULL,
+  `comentarios_docente_fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -105,9 +119,9 @@ INSERT INTO `malla_curricular` (`malla_curricular_id`, `malla_curricular_dsc`, `
 
 CREATE TABLE `nota_promedio` (
   `nota_promedio_id` int(11) NOT NULL,
-  `nota_promedio_alumno_id` int(11) DEFAULT NULL,
-  `nota_promedio_semestre` int(11) DEFAULT NULL,
-  `nota_promedio_nota` varchar(45) DEFAULT NULL
+  `nota_promedio_alumno_id` int(11) NOT NULL,
+  `nota_promedio_semestre` int(11) NOT NULL,
+  `nota_promedio_nota` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -116,9 +130,9 @@ CREATE TABLE `nota_promedio` (
 
 INSERT INTO `nota_promedio` (`nota_promedio_id`, `nota_promedio_alumno_id`, `nota_promedio_semestre`, `nota_promedio_nota`) VALUES
 (1, 16, 13, '12'),
-(2, NULL, 1, '1'),
-(3, NULL, 2, '2'),
-(4, NULL, 2, '2'),
+(2, 0, 1, '1'),
+(3, 0, 2, '2'),
+(4, 0, 2, '2'),
 (7, 17, 12, '12'),
 (8, 17, 2, '3'),
 (9, 16, 45, '45');
@@ -169,7 +183,12 @@ INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `pe
 (27, 'bbb', 'bbbb', 'bbb', 1, NULL, 'bbb', 'bbbb', 'bbb', 'bbb', NULL, NULL, 0),
 (28, 'hola', 'hola', 'hola', 3, NULL, NULL, 'hola', 'hola', 'hola', NULL, NULL, 0),
 (29, 'lolo', 'lolo', 'lolo', 1, NULL, NULL, 'lolo', 'lolo', 'lolo', NULL, NULL, 1),
-(30, 'popo', 'popo', 'popo', 2, NULL, 'popo', 'popo', 'popo', 'popo', NULL, NULL, 0);
+(30, 'popo', 'popo', 'popo', 2, NULL, 'popo', 'popo', 'popo', 'popo', NULL, NULL, 0),
+(1111111, 'Luis Albertosd', 'sdsd', 'sdsd', 1, NULL, NULL, 'sds', 'sdsd', 'sdsd', NULL, NULL, 0),
+(20123677, 'Luis Alberto', 'Jimenez', 'Gonzales', 2, NULL, '20123677', 'Av Arequipa', 'fghjklÃ±', 'ghjkl', NULL, NULL, 0),
+(66666666, 'aaaaaaaaa', 'aaaaaaaaaa', 'aaaaaaaaaaa', 1, NULL, NULL, 'aaaaaaaaaaa', 'aaaaaaa', 'aaaaaaaaaaa', NULL, NULL, 0),
+(67777777, 'wewew', 'ewewe', 'ewe', 1, '67777777', NULL, 'erer', 'erer', 'erer', NULL, NULL, 0),
+(72034061, 'sdsdsdsdsd', 'admsdsd', 'dsd', 3, '72034061', NULL, 'sdsd', 'sdsd', 'sdsd', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -264,7 +283,12 @@ INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usua
 (9, 'bbb', '$2y$10$O94jgXbM5RMi0QFJA5d8qu31RjOa/aUCNdFM.OQ0uKYOEpk76gAhS', 1, 1, 0),
 (10, 'hola', '$2y$10$GRSPmlmVIdJICvUf2QGrvei4XcU1sL3pgqdiypA2tjGIMQilr80Uq', 3, 1, 0),
 (11, 'lolo', '$2y$10$yiP9rXSoTk/rpbwH04w/t.FQOJ3ZDO0Ald2fHEM3OSxXQhyuCjZZS', 1, 1, 0),
-(12, 'popo', '$2y$10$Q2BbZsK4qBBnl16eAeETvegX8LC.XK8EhDadftruXQ2RugU6z4Squ', 2, 1, 0);
+(12, 'popo', '$2y$10$Q2BbZsK4qBBnl16eAeETvegX8LC.XK8EhDadftruXQ2RugU6z4Squ', 2, 1, 0),
+(13, '20123677', '$2y$10$BZKV77JpUXSkw7rzGMZGSeLLjrM05/4897E1oqFpMHcWom.DNVb4.', 2, 20123677, 0),
+(14, '72034061', '$2y$10$oR.C.i/i/w3puUwd7YyeVuMiVhcAlB9qYWUZhjs7n2LNsCMBsSwfS', 3, 72034061, 0),
+(15, '1111111', '$2y$10$55D7L6fIx1V0gSNexJXvReBJOO.iPKX5i24t9QIL0A1LOTL1DW80q', 1, 1111111, 0),
+(16, '66666666', '$2y$10$619x9wfnij1nalDTw3GF6OSjMi2G0Yus21oR1Wj2vostaipRTum0W', 1, 66666666, 0),
+(17, '67777777', '$2y$10$zlWLplJGHONk22J93TNl9eV6NpC2q4vdnXH6ulEz8Pkd2h3Ge6ngO', 1, 67777777, 0);
 
 --
 -- Índices para tablas volcadas
@@ -278,6 +302,15 @@ ALTER TABLE `alumno_curso`
   ADD UNIQUE KEY `alumno_curso_id_UNIQUE` (`alumno_curso_id`),
   ADD KEY `fk_alumno_curso_persona_idx` (`alumno_cursoc_alumno_id`),
   ADD KEY `fk_alumno_curso_curso_idx` (`alumno_curso_curso_id`);
+
+--
+-- Indices de la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  ADD PRIMARY KEY (`comentarios_docente_id`),
+  ADD UNIQUE KEY `comentarios_docente_id_UNIQUE` (`comentarios_docente_id`),
+  ADD KEY `fk_comentarios_docente_idx` (`comentarios_docente_docente_id`),
+  ADD KEY `fk_comentarios_alumno_idx` (`comentarios_docente_alumno_id`);
 
 --
 -- Indices de la tabla `curso`
@@ -376,6 +409,12 @@ ALTER TABLE `alumno_curso`
   MODIFY `alumno_curso_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  MODIFY `comentarios_docente_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
@@ -406,12 +445,6 @@ ALTER TABLE `nota_promedio`
   MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `persona`
---
-ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
@@ -439,7 +472,7 @@ ALTER TABLE `tipo_persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
@@ -451,6 +484,13 @@ ALTER TABLE `usuario`
 ALTER TABLE `alumno_curso`
   ADD CONSTRAINT `fk_alumno_curso_curso` FOREIGN KEY (`alumno_curso_curso_id`) REFERENCES `curso` (`curso_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_alumno_curso_persona` FOREIGN KEY (`alumno_cursoc_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  ADD CONSTRAINT `fk_comentarios_alumno` FOREIGN KEY (`comentarios_docente_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_comentarios_docente` FOREIGN KEY (`comentarios_docente_docente_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `curso`
@@ -472,12 +512,6 @@ ALTER TABLE `libro`
   ADD CONSTRAINT `fk_libro_tipo_libro` FOREIGN KEY (`libro_tipo`) REFERENCES `tipo_libro` (`tipo_libro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `nota_promedio`
---
-ALTER TABLE `nota_promedio`
-  ADD CONSTRAINT `fk_nota_promedio_persona` FOREIGN KEY (`nota_promedio_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `persona`
 --
 ALTER TABLE `persona`
@@ -497,46 +531,6 @@ ALTER TABLE `prestamo`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_usuario__rol` FOREIGN KEY (`usuario_rol_id`) REFERENCES `rol` (`rol_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuario_alumno` FOREIGN KEY (`usuario_persona_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  
-
-CREATE TABLE `bd_epcc`.`comentarios_docente` (
-  `comentarios_docente_id` INT NOT NULL AUTO_INCREMENT,
-  `comentarios_docente_docente_id` INT NOT NULL,
-  `comentarios_docente_alumno_id` INT NOT NULL,
-  `comentarios_docente_comentario` LONGTEXT NOT NULL,
-  `comentarios_docente_fecha` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`comentarios_docente_id`),
-  UNIQUE INDEX `comentarios_docente_id_UNIQUE` (`comentarios_docente_id` ASC),
-  INDEX `fk_comentarios_docente_idx` (`comentarios_docente_docente_id` ASC),
-  INDEX `fk_comentarios_alumno_idx` (`comentarios_docente_alumno_id` ASC),
-  CONSTRAINT `fk_comentarios_docente`
-    FOREIGN KEY (`comentarios_docente_docente_id`)
-    REFERENCES `bd_epcc`.`persona` (`persona_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comentarios_alumno`
-    FOREIGN KEY (`comentarios_docente_alumno_id`)
-    REFERENCES `bd_epcc`.`persona` (`persona_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-  
-
-ALTER TABLE `bd_epcc`.`nota_promedio` 
-DROP FOREIGN KEY `fk_nota_promedio_persona`;
-ALTER TABLE `bd_epcc`.`nota_promedio` 
-CHANGE COLUMN `nota_promedio_id` `nota_promedio_id` INT(11) NOT NULL AUTO_INCREMENT ,
-CHANGE COLUMN `nota_promedio_alumno_id` `nota_promedio_alumno_id` INT(11) NOT NULL ,
-CHANGE COLUMN `nota_promedio_semestre` `nota_promedio_semestre` INT(11) NOT NULL ,
-CHANGE COLUMN `nota_promedio_nota` `nota_promedio_nota` VARCHAR(45) NOT NULL ;
-ALTER TABLE `bd_epcc`.`nota_promedio` 
-ADD CONSTRAINT `fk_nota_promedio_persona`
-  FOREIGN KEY (`nota_promedio_alumno_id`)
-  REFERENCES `bd_epcc`.`persona` (`persona_id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

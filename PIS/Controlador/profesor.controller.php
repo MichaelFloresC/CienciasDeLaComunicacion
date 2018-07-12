@@ -37,7 +37,7 @@ class ProfesorController{
         $pvd = new profesor();
 		$pc2 = new usuario();
 		$hash = password_hash($_REQUEST['persona_dni'], PASSWORD_BCRYPT);
-        $pvd->persona_id = $_REQUEST['persona_id'];
+        $pvd->persona_id = $_REQUEST['persona_dni'];
         $pvd->persona_nombres = $_REQUEST['persona_nombres'];
         $pvd->persona_apellido1 = $_REQUEST['persona_apellido1'];
         $pvd->persona_apellido2 = $_REQUEST['persona_apellido2'];
@@ -51,7 +51,7 @@ class ProfesorController{
         $pc2->usuario_cuenta = $_REQUEST['persona_dni'];
         $pc2->usuario_password = $hash;
         $pc2->usuario_rol_id = $_REQUEST['persona_tipo_id'];
-		$pc2->usuario_persona_id = 1;
+		$pc2->usuario_persona_id = $_REQUEST['persona_dni'];
         $pc2->usuario_estado = $_REQUEST['persona_estado'];
         
         $this->model->Registrar($pvd);

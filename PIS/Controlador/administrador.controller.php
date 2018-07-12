@@ -43,9 +43,10 @@ class AdministradorController{
     public function Guardar(){
         $pvd = new administrador();
 		$pc2 = new usuario();
-		$hash = password_hash($_REQUEST['persona_nombres'], PASSWORD_BCRYPT);
+		$hash = password_hash($_REQUEST['persona_dni'], PASSWORD_BCRYPT);
         //Captura de los datos del formulario (vista).
-        $pvd->persona_id = $_REQUEST['persona_id'];
+        $pvd->persona_id = $_REQUEST['persona_dni'];
+        $pvd->persona_dni = $_REQUEST['persona_dni'];
         $pvd->persona_nombres = $_REQUEST['persona_nombres'];
         $pvd->persona_apellido1 = $_REQUEST['persona_apellido1'];
         $pvd->persona_apellido2 = $_REQUEST['persona_apellido2'];
@@ -55,10 +56,10 @@ class AdministradorController{
         $pvd->persona_telefono = $_REQUEST['persona_telefono'];
         $pvd->persona_estado = $_REQUEST['persona_estado'];
 		$pc2->usuario_id = $_REQUEST['usuario_id'];
-        $pc2->usuario_cuenta = $_REQUEST['persona_nombres'];
+        $pc2->usuario_cuenta = $_REQUEST['persona_dni'];
         $pc2->usuario_password = $hash;
         $pc2->usuario_rol_id = $_REQUEST['persona_tipo_id'];
-		$pc2->usuario_persona_id = 1;
+		$pc2->usuario_persona_id = $_REQUEST['persona_dni'];
         $pc2->usuario_estado = $_REQUEST['persona_estado'];
         
         //Registro al modelo alumno.

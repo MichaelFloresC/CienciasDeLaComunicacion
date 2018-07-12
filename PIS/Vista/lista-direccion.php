@@ -30,6 +30,7 @@
                                         <tr>
                                             <th>Apellidos y Nombres</th>
                                             <th>Telefono</th>
+                                            <th>DNI</th>
                                             <th>Email</th>
                                             
 											<?php
@@ -47,6 +48,7 @@
                                         <tr class="odd gradeX">
 											<td><?php echo $r->persona_apellido1; ?> <?php echo $r->persona_apellido2; ?> <?php echo $r->persona_nombres; ?></td>
 											<td><?php echo $r->persona_telefono; ?></td>
+											<td><?php echo $r->persona_dni; ?></td>
 											<td><?php echo $r->persona_email; ?></td>
 											<?php
 												if($_SESSION['rol']==1){

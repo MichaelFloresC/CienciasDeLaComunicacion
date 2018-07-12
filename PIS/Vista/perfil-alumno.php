@@ -157,34 +157,21 @@ if($_SESSION['rol']==2){
                         <!-- .panel-heading -->
                         <div class="panel-body">
                             <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
+                                <?php foreach($this->model->Listare($pvd->persona_id) as $r): ?>
+								<div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Lisbeth Ortiz</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">23 de Mayo del 2018</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_docente_id; ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_fecha; ?></a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                           BUen trabajo, pero puedes mejorar
-                                        </div>
+                                           <?php echo $r->comentarios_docente_comentario; ?> 
+										</div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Carmen Chirinos Garcia</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">15 de Junio del 2018</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                           Debes ser más cuidadoso con tus inasistencias
-                                        </div>
-                                    </div>
-                                </div>
-                                
-
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <!-- .panel-body -->
@@ -260,34 +247,21 @@ else{
                         <!-- .panel-heading -->
                         <div class="panel-body">
                             <div class="panel-group" id="accordion">
+                                <?php foreach($this->model->Listare($pvd->persona_id) as $r): ?>
 								<div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Lisbeth Ortiz</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">23 de Mayo del 2018</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_docente_id; ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_fecha; ?></a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                           BUen trabajo, pero puedes mejorar
+                                           <?php echo $r->comentarios_docente_comentario; ?> 
 										</div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Carmen Chirinos Garcia</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">15 de Junio del 2018</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                           Debes ser más cuidadoso con tus inasistencias
-                                        </div>
-                                    </div>
-                                </div>
-                                
-
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <!-- .panel-body -->

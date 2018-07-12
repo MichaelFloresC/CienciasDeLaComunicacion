@@ -4,6 +4,7 @@ class administrador
 	private $pdo;
 
     public $persona_id;
+    public $persona_dni;
     public $persona_nombres;
     public $persona_apellido1;
     public $persona_apellido2;
@@ -105,16 +106,18 @@ class administrador
 	{
 		try
 		{
-			$sql = "INSERT INTO persona (persona_nombres,persona_apellido1,persona_apellido2,persona_tipo_id,persona_direccion,persona_email,persona_telefono, persona_estado)
-		        VALUES (?, ?, ?, ?, ?, ?,?,?)";
+			$sql = "INSERT INTO persona (persona_id, persona_nombres,persona_apellido1,persona_apellido2,persona_tipo_id,persona_dni,persona_direccion,persona_email,persona_telefono, persona_estado)
+		        VALUES (?,?, ?, ?, ?, ?,?, ?,?,?)";
 
 			$this->pdo->prepare($sql)
 		     ->execute(
 				array(
+						$data->persona_id,
 						$data->persona_nombres,
                         $data->persona_apellido1,
                         $data->persona_apellido2,
                         $data->persona_tipo_id,
+                        $data->persona_dni,
                         $data->persona_direccion,
                         $data->persona_email,
                         $data->persona_telefono,
