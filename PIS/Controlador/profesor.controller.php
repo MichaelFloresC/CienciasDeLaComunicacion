@@ -94,10 +94,11 @@ class ProfesorController{
         foreach ($lineas as $linea_num => $linea) { 
             if($i != 0) { 
                 $datos = explode(",",$linea);
+				$pvd->persona_id = $datos[4];
                 $pvd->persona_nombres = utf8_encode($datos[0]);
                 $pvd->persona_apellido1 = utf8_encode($datos[1]);
                 $pvd->persona_apellido2 = utf8_encode($datos[2]);
-                $pvd->persona_tipo_id = 2;
+                $pvd->persona_tipo_id = 3;
                 $pvd->persona_dni = $datos[4];
                 $pvd->persona_direccion = utf8_encode($datos[5]);
                 $pvd->persona_email = utf8_encode($datos[6]);
