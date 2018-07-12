@@ -1,3 +1,6 @@
+
+
+
 <?php include("restriccion.php"); ?>
 <!DOCTYPE html>
 <html>
@@ -6,6 +9,38 @@
 <?php
 if($_SESSION['rol']==2){
 ?>
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+       
+    function buscar(){
+        
+        $.ajax({
+            type: 'POST',
+            url: '../Controlador/alumno.controller.php',
+            data: { 
+                id_usuario: '<?php echo $_SESSION["persona_id"];?>'
+            },
+            success: function (data) {
+                console.log("data", data);
+                $('h3 a').text(data.persona_nombres+" "+data.persona_apellido1+" "+data.persona_apellido2);
+                $("#lblCui").text(data.persona_cui);
+                $("#lblDireccion").text(data.persona_direccion);
+                $("#lblCorreo").text(data.persona_email);
+                $("#lblTelefono").text(data.persona_telefono);
+            }
+        });
+    };
+   
+    function ready(){
+        var te = "test";    
+    } 
+    $(document).ready(function () {
+        buscar();
+        
+    });
+</script>
+
+
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -24,6 +59,7 @@ if($_SESSION['rol']==2){
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php
 							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+                            include '../Controlador/alumno.controller.php';
 						?>
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -46,7 +82,7 @@ if($_SESSION['rol']==2){
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 						<li>
-                            <a href="perfil-alumno.php"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
+                            <a href="perfil-alumno.php" onclick="return ready();"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
                         </li>
 											
 						
@@ -71,6 +107,101 @@ if($_SESSION['rol']==2){
             <!-- /.Barra Desplegable Izquierda -->
         </nav>
 		<!-- /.Barra Alumno -->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                            <br>
+                            
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><a href="#"> </a><br></h3>
+                                <button type="button" class="btn btn-primary btn-xs">Generar Reporte</button>
+                                
+                            </div>
+                            <div class="alert alert-success">
+                                Usted se encuentra en <a href="#" class="alert-link"> Tercio Superior</a>.
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class=" col-md-9 col-lg-9 ">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                                <tr><td>CUI:</td>
+                                                    <td><label id="lblCui"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dirección</td>
+                                                    <td><label id="lblDireccion"></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Correo</td>
+                                                    <td><label id="lblCorreo"></label></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Telefono</td>
+                                                    <td><label id="lblTelefono"></label></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div >
+                            <canvas id="chart1" width="400" height="100"></canvas>
+                            </div>
+                            <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Comentarios de los docentes
+                        </div>
+                        <!-- .panel-heading -->
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Lisbeth Ortiz</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">23 de Mayo del 2018</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                           BUen trabajo, pero puedes mejorar
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Carmen Chirinos Garcia</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">15 de Junio del 2018</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                           Debes ser más cuidadoso con tus inasistencias
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+                            
+                </div>
+            </div>
+            <!-- /.row -->
+            
+           
+        <!-- /#page-wrapper -->
+            
+        </div>
+
 <?php
 }
 else{
@@ -129,21 +260,34 @@ else{
                         <!-- .panel-heading -->
                         <div class="panel-body">
                             <div class="panel-group" id="accordion">
-                                <?php foreach($this->model->Listare($pvd->persona_id) as $r): ?>
 								<div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->persona_nombres; ?></a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_fecha; ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Lisbeth Ortiz</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">23 de Mayo del 2018</a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                           <?php echo $r->comentarios_docente_comentario; ?> 
+                                           BUen trabajo, pero puedes mejorar
 										</div>
                                     </div>
                                 </div>
-                                <?php endforeach; ?>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Carmen Chirinos Garcia</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">15 de Junio del 2018</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                           Debes ser más cuidadoso con tus inasistencias
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
                             </div>
                         </div>
                         <!-- .panel-body -->
@@ -156,6 +300,7 @@ else{
             </div>
             <!-- /.row -->
             
+           
            
         <!-- /#page-wrapper -->
             
@@ -171,5 +316,7 @@ else{
     <!-- /#wrapper -->
 	<?php include("scripts.php"); ?>
 </body>
+
+
 
 </html>

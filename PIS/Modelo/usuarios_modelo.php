@@ -23,8 +23,9 @@ class usuarios_modelo{
 	  		 	 $_SESSION['loggedin'] = true;
 				 $_SESSION['rol']= $row['usuario_rol_id'];
 	   			 $_SESSION['usuario_cuenta'] = $username;
+	   			 $_SESSION['persona_id'] = $row['usuario_persona_id'];
 	   			 $_SESSION['start'] = time();
-	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+	  			 $_SESSION['expire'] = $_SESSION['start'] + (50 * 60);
 	  			 header('Location: Vista/bienvenida.php');
 	  			
 			 }

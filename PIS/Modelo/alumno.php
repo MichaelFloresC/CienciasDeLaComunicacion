@@ -87,6 +87,7 @@ class alumno
 			//Ejecución de la sentencia SQL utilizando el parámetro id.
 			$stm->execute(array($persona_id));
 			return $stm->fetch(PDO::FETCH_OBJ);
+
 		} catch (Exception $e)
 		{
 			die($e->getMessage());

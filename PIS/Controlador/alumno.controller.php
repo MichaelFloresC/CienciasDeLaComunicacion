@@ -2,6 +2,18 @@
 //Se incluye el modelo donde conectará el controlador.
 require_once '../Modelo/alumno.php';
 require_once '../Modelo/usuario.php';
+require_once '../Modelo/database.php';
+
+
+if(isset($_POST['id_usuario'])) {
+    $usuario = $_POST['id_usuario'];
+    // $rpta =$arr = array ('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5);
+    // $rpta = $pvd = new alumno();
+    $modelo = new alumno();
+    $pvd = $modelo->Obtener($usuario);
+    header('Content-Type: application/json');
+    echo json_encode($pvd);
+}
 
 class AlumnoController{
 
