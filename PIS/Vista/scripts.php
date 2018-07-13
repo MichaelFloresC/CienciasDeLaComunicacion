@@ -22,7 +22,11 @@
                 responsive: true
         });
     });
+<<<<<<< HEAD
     </script>
 
      <script src="../plugins/js/highcharts.js"></script>
     <script src="../plugins/js/modules/exporting.js"></script>
+=======
+    </script>
+>>>>>>> 7de0671722bb6285450a92891a6b19ff502052c3

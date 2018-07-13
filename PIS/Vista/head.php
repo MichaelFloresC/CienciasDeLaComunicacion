@@ -33,6 +33,7 @@
     <!-- Custom Fonts -->
     <link href="../plugins/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
+<<<<<<< HEAD
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -82,4 +83,6 @@ $(function () {
 
 
         </script>
+=======
+>>>>>>> 7de0671722bb6285450a92891a6b19ff502052c3
 </head>

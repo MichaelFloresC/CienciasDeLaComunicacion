@@ -36,6 +36,7 @@ class notas
 			die($e->getMessage());
 		}
 	}
+<<<<<<< HEAD
 	
 	public function Notas_quinto()
 	{
@@ -125,6 +126,9 @@ class notas
 			die($e->getMessage());
 		}
 	}
+=======
+
+>>>>>>> 7de0671722bb6285450a92891a6b19ff502052c3
 	public function Obtener($nota_promedio_id)
 	{
 		try
