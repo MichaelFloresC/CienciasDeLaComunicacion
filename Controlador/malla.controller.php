@@ -15,7 +15,7 @@ class MallaController{
     }
 
     //Llamado plantilla principal
-    public function Listar(){
+    public function Index(){
         require_once '../Vista/Malla/lista-malla.php';
 
     }
@@ -57,7 +57,7 @@ class MallaController{
             $i++;
         }
 
-        header('Location: ../Vista/Accion.php?c=malla&a=Listar');
+        header('Location: ../Vista/Accion.php?c=malla');
     }
 
 }

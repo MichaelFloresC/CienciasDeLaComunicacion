@@ -13,7 +13,7 @@ class AdministradorController{
 
     //Llamado plantilla principal
     public function Index(){
-        require_once '../Vista/lista-direccion.php';
+        require_once '../Vista/Administrador/lista-direccion.php';
 
     }
 
@@ -27,7 +27,7 @@ class AdministradorController{
         }
 
         //Llamado de las vistas.
-        require_once '../Vista/editar-direccion.php';
+        require_once '../Vista/Administrador/editar-direccion.php';
   }
 
     //Llamado a la vista alumno-nuevo
@@ -35,7 +35,7 @@ class AdministradorController{
         $pvd = new administrador();
 
         //Llamado de las vistas.
-        require_once '../Vista/agregar-direccion.php';
+        require_once '../Vista/Administrador/agregar-direccion.php';
 
     }
 
@@ -86,12 +86,12 @@ class AdministradorController{
 
         $this->model->Actualizar($pvd);
 
-        header('Location: ../Vista/administradorVista.php');
+        header('Location: ../Vista/Accion.php?c=administrador');
     }
 
     //Método que elimina la tupla proveedor con el nit dado.
     public function Eliminar(){
         $this->model->Eliminar($_REQUEST['persona_id']);
-        header('Location: ../Vista/administradorVista.php');
+        header('Location: ../Vista/Accion.php?c=administrador');
     }
 }

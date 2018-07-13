@@ -132,14 +132,14 @@ class profesor
                         $data->persona_estado
                 )
 			);
-			        header('Location: ../Vista/profesorVista.php');
+			        header('Location: ../Vista/Accion.php?c=profesor');
 
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
 		}
 		}else{
-			header("Location: index.php?m=2");
+			header("Location: ../Vista/Accion.php?c=profesor&a=error");
 		}
 	}
 	

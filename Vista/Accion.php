@@ -18,7 +18,7 @@
   {
     // Obtiene el controlador a cargar
     $controller = strtolower($_REQUEST['c']);
-    $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Accion';
+    $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Index';
 
     // Instancia el controlador
     require_once "../Controlador/$controller.controller.php";

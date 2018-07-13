@@ -12,7 +12,7 @@ class ProfesorController{
     }
 
     public function Index(){
-        require_once '../Vista/lista-profesores.php';
+        require_once '../Vista/Profesor/lista-profesores.php';
 
     }
 
@@ -23,13 +23,13 @@ class ProfesorController{
             $pvd = $this->model->Obtener($_REQUEST['persona_id']);
         }
 
-        require_once '../Vista/editar-profesores.php';
+        require_once '../Vista/Profesor/editar-profesores.php';
   }
 
     public function Nuevo(){
         $pvd = new profesor();
 
-        require_once '../Vista/agregar-profesores.php';
+        require_once '../Vista/Profesor/agregar-profesores.php';
 
     }
 
@@ -74,12 +74,12 @@ class ProfesorController{
 
         $this->model->Actualizar($pvd);
 
-        header('Location: ../Vista/profesorVista.php');
+        header('Location: ../Vista/Accion.php?c=profesor');
     }
 
     public function Eliminar(){
         $this->model->Eliminar($_REQUEST['persona_id']);
-        header('Location: ../Vista/profesorVista.php');
+        header('Location: ../Vista/Accion.php?c=profesor');
     }
 
     public function GuardarArchivo(){

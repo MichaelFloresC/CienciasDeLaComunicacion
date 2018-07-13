@@ -183,13 +183,13 @@ class alumno
                         $data->persona_estado
                 )
 			);
-        header('Location: ../Vista/alumnoVista.php');
+        header('Location: ../Vista/Accion.php?c=alumno');
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
 		}
 		}else{
-			header("Location: index.php?m=2");
+			header("Location: ../Vista/Accion.php?c=alumno&a=error");
 		}
 	}
 	

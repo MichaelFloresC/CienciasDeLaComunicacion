@@ -130,14 +130,14 @@ class administrador
                         $data->persona_estado
                 )
 			);
-			        header('Location: ../Vista/administradorVista.php');
+			        header('Location: ../Vista/Accion.php?c=administrador');
 
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
 		}
 		}else{
-			header("Location: index.php?m=2");
+			header("Location: ../Vista/Accion.php?c=administrador&a=error");
 		}
 	}
 	

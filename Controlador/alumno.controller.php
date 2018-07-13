@@ -8,8 +8,6 @@ require_once '../Modelo/comentar.php';
 
 if(isset($_POST['id_usuario'])) {
     $usuario = $_POST['id_usuario'];
-    // $rpta =$arr = array ('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5);
-    // $rpta = $pvd = new alumno();
     $modelo = new alumno();
     $pvd = $modelo->Obtener($usuario);
     header('Content-Type: application/json');
@@ -29,7 +27,7 @@ class AlumnoController{
 
     //Llamado plantilla principal
     public function Index(){
-        require_once '../Vista/lista-alumnos.php';
+        require_once '../Vista/Alumno/lista-alumnos.php';
 
     }
 
@@ -43,7 +41,7 @@ class AlumnoController{
         }
 
         //Llamado de las vistas.
-        require_once '../Vista/editar-alumnos.php';
+        require_once '../Vista/Alumno/editar-alumnos.php';
 	}
 
 	//Llamado a la vista alumno-perfil
@@ -56,7 +54,7 @@ class AlumnoController{
         }
 
         //Llamado de las vistas.
-        require_once '../Vista/perfil-alumno.php';
+        require_once '../Vista/Alumno/perfil-alumno.php';
 	}
 
     //Llamado a la vista alumno-nuevo
@@ -64,7 +62,7 @@ class AlumnoController{
         $pvd = new alumno();
 
         //Llamado de las vistas.
-        require_once '../Vista/agregar-alumnos.php';
+        require_once '../Vista/Alumno/agregar-alumnos.php';
 
     }
 
@@ -117,13 +115,13 @@ class AlumnoController{
 
         $this->model->Actualizar($pvd);
 
-        header('Location: ../Vista/alumnoVista.php');
+        header('Location: ../Vista/Accion.php?c=alumno');
     }
 
     //Método que elimina la tupla proveedor con el nit dado.
     public function Eliminar(){
         $this->model->Eliminar($_REQUEST['persona_id']);
-        header('Location: ../Vista/alumnoVista.php');
+        header('Location: ../Vista/Accion.php?c=alumno');
     }
 
     public function GuardarArchivo(){
