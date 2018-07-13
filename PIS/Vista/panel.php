@@ -81,10 +81,10 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="lista-malla.php">Lista</a>
+                                    <a href="Accion.php?c=malla&a=Listar">Lista</a>
                                 </li>
 								<li>
-                                    <a href="mallaVista.php?c=malla&a=Nuevo">Subir Nuevo</a>
+                                    <a href="Accion.php?c=malla&a=Nuevo">Subir Nuevo</a>
                                 </li>
 
                             </ul>

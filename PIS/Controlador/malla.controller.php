@@ -15,43 +15,16 @@ class MallaController{
     }
 
     //Llamado plantilla principal
-    public function Index(){
-        require_once '../Vista/lista-malla.php';
+    public function Listar(){
+        require_once '../Vista/Malla/lista-malla.php';
 
     }
-
-    //Llamado a la vista alumno-editar
-    /*public function Crud(){
-        $pvd = new alumno();
-
-        //Se obtienen los datos del alumno a editar.
-        if(isset($_REQUEST['persona_id'])){
-            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
-        }
-
-        //Llamado de las vistas.
-        require_once '../Vista/editar-alumnos.php';
-    }
-    
-    //Llamado a la vista alumno-perfil
-    public function Perfil(){
-        $pvd = new alumno();
-
-        //Se obtienen los datos del alumno.
-        if(isset($_REQUEST['persona_id'])){
-            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
-        }
-
-        //Llamado de las vistas.
-        require_once '../Vista/perfil-alumno.php';
-    }*/
-
     //Llamado a la vista alumno-nuevo
     public function Nuevo(){
         $pvd = new malla();
 
         //Llamado de las vistas.
-        require_once '../Vista/agregar-malla.php';
+        require_once '../Vista/Malla/agregar-malla.php';
 
     }
 
@@ -84,7 +57,7 @@ class MallaController{
             $i++;
         }
 
-        header('Location: ../Vista/mallaVista.php');
+        header('Location: ../Vista/Accion.php?c=malla&a=Listar');
     }
 
 }

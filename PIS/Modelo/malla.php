@@ -55,6 +55,21 @@ class malla
 		}
 	}
 	
+	public function Listar()
+	{
+		try
+		{
+			$result = array();
+			$stm = $this->pdo->prepare("SELECT * FROM malla_curricular");
+			$stm->execute();
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	
 	
 	
 
