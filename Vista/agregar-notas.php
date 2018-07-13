@@ -47,9 +47,19 @@
 												<?php endforeach; ?> 
 											</select>
 											<br><br>
+											<label>Año</label>
+											<select name= "nota_promedio_anio" class="selectpicker col-lg-2" data-live-search="true">
+													<option value="2018"  data-tokens="<?php echo $pvd->nota_promedio_anio; ?>">2018</option>
+													<option value="2019"  data-tokens="<?php echo $pvd->nota_promedio_anio; ?>">2019</option>
+													<option value="2020"  data-tokens="<?php echo $pvd->nota_promedio_anio; ?>">2020</option>
+											</select>
 											<label>Semestre</label>
-												<input class="form-control" name="nota_promedio_semestre" value="<?php echo $pvd->nota_promedio_semestre; ?>"  placeholder="Ingrese Semestre">
-											<br>
+											<select name= "nota_promedio_semestre" class="selectpicker col-lg-1" data-live-search="true">
+													<option value="I"  data-tokens="<?php echo $pvd->nota_promedio_semestre; ?>">I</option>
+													<option value="II"  data-tokens="<?php echo $pvd->nota_promedio_semestre; ?>">II</option>
+													<option value="III"  data-tokens="<?php echo $pvd->nota_promedio_semestre; ?>">III</option>
+											</select>
+											<br><br>
 											<label>Nota</label>
 												<input class="form-control" name="nota_promedio_nota" value="<?php echo $pvd->nota_promedio_nota; ?>"  placeholder="Ingrese Nota">
  

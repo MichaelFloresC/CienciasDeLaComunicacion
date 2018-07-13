@@ -69,7 +69,7 @@ class NotasController{
         //Captura de los datos del formulario (vista).
         $pvd->nota_promedio_id = $_REQUEST['nota_promedio_id'];
         $pvd->nota_promedio_alumno_id = $_REQUEST['nota_promedio_alumno_id'];
-        $pvd->nota_promedio_semestre = $_REQUEST['nota_promedio_semestre'];
+        $pvd->nota_promedio_semestre = $_REQUEST['nota_promedio_anio'].'-'.$_REQUEST['nota_promedio_semestre'];
         $pvd->nota_promedio_nota = $_REQUEST['nota_promedio_nota'];
 
         //Registro al modelo notas.

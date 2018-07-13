@@ -6,6 +6,7 @@ class notas
     public $nota_promedio_id;
     public $nota_promedio_alumno_id;
     public $nota_promedio_semestre;
+    public $nota_promedio_anio;
     public $nota_promedio_nota;
 
 	public function __CONSTRUCT()
