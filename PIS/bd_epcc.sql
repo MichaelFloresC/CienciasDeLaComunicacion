@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2018 a las 06:21:50
+-- Tiempo de generación: 13-07-2018 a las 07:29:05
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -48,14 +48,6 @@ CREATE TABLE `comentarios_docente` (
   `comentarios_docente_fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `comentarios_docente`
---
-
-INSERT INTO `comentarios_docente` (`comentarios_docente_id`, `comentarios_docente_docente_id`, `comentarios_docente_alumno_id`, `comentarios_docente_comentario`, `comentarios_docente_fecha`) VALUES
-(2, 30, 72034061, 'wewe', '2018-07-13 01:03:35'),
-(3, 72034061, 30, 'Hola', '2018-07-13 01:06:15');
-
 -- --------------------------------------------------------
 
 --
@@ -69,27 +61,6 @@ CREATE TABLE `curso` (
   `curso_malla_id` int(11) NOT NULL,
   `curso_equivalencia_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `curso`
---
-
-INSERT INTO `curso` (`curso_id`, `curso_codigo`, `curso_descripcion`, `curso_malla_id`, `curso_equivalencia_id`) VALUES
-(1, '2012SS', 'SISTEMAS DE SEGURIDAD', 2, 0),
-(2, '2015SCC', 'SISTEMAS DE SEGURIDAD CRITICA', 2, 0),
-(3, '2015GES', 'GESTION DE EMPRENDIMIENTO DE SOFTWARE', 2, 0),
-(4, '2012SS', 'SISTEMAS DE SEGURIDAD', 2, 0),
-(5, '2015SCC', 'SISTEMAS DE SEGURIDAD CRITICA', 2, 0),
-(6, '2015GES', 'GESTION DE EMPRENDIMIENTO DE SOFTWARE', 2, 0),
-(7, '2012SS', 'SISTEMAS DE SEGURIDAD', 2, 0),
-(8, '2015SCC', 'SISTEMAS DE SEGURIDAD CRITICA', 2, 0),
-(9, '2015GES', 'GESTION DE EMPRENDIMIENTO DE SOFTWARE', 2, 0),
-(10, '2012SS', 'SISTEMAS DE SEGURIDAD', 5, 0),
-(11, '2015SCC', 'SISTEMAS DE SEGURIDAD CRITICA', 5, 0),
-(12, '2015GES', 'GESTION DE EMPRENDIMIENTO DE SOFTWARE', 5, 0),
-(13, '2012SS', 'SISTEMAS DE SEGURIDAD', 6, 0),
-(14, '2015SCC', 'SISTEMAS DE SEGURIDAD CRITICA', 6, 0),
-(15, '2015GES', 'GESTION DE EMPRENDIMIENTO DE SOFTWARE', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -133,16 +104,6 @@ CREATE TABLE `malla_curricular` (
   `malla_curricular_anio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `malla_curricular`
---
-
-INSERT INTO `malla_curricular` (`malla_curricular_id`, `malla_curricular_dsc`, `malla_curricular_anio`) VALUES
-(1, 'malla', 2018),
-(2, 'epcc2023', 2023),
-(5, 'epaa2024', 2024),
-(6, 'aaaa5000', 5000);
-
 -- --------------------------------------------------------
 
 --
@@ -155,19 +116,6 @@ CREATE TABLE `nota_promedio` (
   `nota_promedio_semestre` int(11) NOT NULL,
   `nota_promedio_nota` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `nota_promedio`
---
-
-INSERT INTO `nota_promedio` (`nota_promedio_id`, `nota_promedio_alumno_id`, `nota_promedio_semestre`, `nota_promedio_nota`) VALUES
-(1, 16, 13, '12'),
-(2, 0, 1, '1'),
-(3, 0, 2, '2'),
-(4, 0, 2, '2'),
-(7, 17, 12, '12'),
-(8, 17, 2, '3'),
-(9, 16, 45, '45');
 
 -- --------------------------------------------------------
 
@@ -196,33 +144,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `persona_apellido2`, `persona_tipo_id`, `persona_dni`, `persona_cui`, `persona_direccion`, `persona_email`, `persona_telefono`, `persona_malla`, `persona_seccion`, `persona_estado`) VALUES
-(1, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, '47695825', '20120867', 'Av Arequipa', 'luisjimgon@unsa.edu.pe', '977645852', 1, 'A', 1),
-(12, 'dfghjk', 'dfghjkl', 'fghjkl', 1, NULL, 'fghjklÃ±', 'fghjklÃ±', 'fghjklÃ±', 'ghjkl', NULL, NULL, 1),
-(13, 'wertyu', 'ertyuio', 'ertyuio', 2, 'rtyuiop', NULL, 'rtyuiop', 'rtyuiop', '222', NULL, NULL, 1),
-(14, 'cvbnm', 'cvbnm,', 'cvbnm,', 1, NULL, '.vbnm,', ',vbnm', 'vbnm', '2333', NULL, NULL, 1),
-(15, 'cvbnm', 'vbnm,', 'vbnm,', 3, NULL, NULL, 'vbn', 'vbnm,', '99999', NULL, NULL, 1),
-(16, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, '20123677', 'irtyu', 'rtyu', 'isdd', NULL, NULL, 1),
-(17, 'Luis Alberto', 'ertyu', 'fghj', 1, NULL, 'fghj', 'jkfghjk', 'kfgh', 'lghjkl', NULL, NULL, 0),
-(18, 'Michael', 'Flores', 'Conislla', 1, NULL, '2012', 'ertyuiop', 'ljk', 'r34567', NULL, NULL, 0),
-(19, 'Luis Alberto', 'Jimenez', 'Gonzales', 1, NULL, '20123677', 'Av Arequipa', 'ljimenezgo@unsa.edu.pe', '992729679', NULL, NULL, 1),
-(20, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
-(21, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
-(22, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
-(23, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
-(24, 'Michael Mario', 'Flores', 'Conislla', 1, NULL, '20123567', 'Characato', 'mflores@unsa.edu.pe', '996735462', NULL, NULL, 0),
-(25, 'Luis Alberto', 'qwertyui', 'sdfghjk', 1, NULL, ' cvbnm', 'rtyuio', 'rtgyuio', 'ghjkl', NULL, NULL, 0),
-(26, 'Luis Alberto', 'qwertyui', 'sdfghjk', 1, NULL, ' cvbnm', 'rtyuio', 'rtgyuio', 'ghjkl', NULL, NULL, 0),
-(27, 'bbb', 'bbbb', 'bbb', 1, NULL, 'bbb', 'bbbb', 'bbb', 'bbb', NULL, NULL, 0),
-(28, 'hola', 'hola', 'hola', 3, NULL, NULL, 'hola', 'hola', 'hola', NULL, NULL, 0),
-(29, 'lolo', 'lolo', 'lolo', 1, NULL, NULL, 'lolo', 'lolo', 'lolo', NULL, NULL, 1),
-(30, 'popo', 'popo', 'popo', 2, NULL, 'popo', 'popo', 'popo', 'popo', NULL, NULL, 0),
-(1111111, 'Luis Albertosd', 'sdsd', 'sdsd', 1, NULL, NULL, 'sds', 'sdsd', 'sdsd', NULL, NULL, 0),
-(20123677, 'Luis Alberto', 'Jimenez', 'Gonzales', 2, NULL, '20123677', 'Av Arequipa', 'fghjklÃ±', 'ghjkl', NULL, NULL, 0),
-(23948932, 'JUAN', 'PARODI', 'CANO', 3, '23948932', NULL, 'La direccion va aquÃ­', 'jparodic@unsa.edu.pe', 'null', NULL, NULL, 0),
-(66666666, 'aaaaaaaaa', 'aaaaaaaaaa', 'aaaaaaaaaaa', 1, NULL, NULL, 'aaaaaaaaaaa', 'aaaaaaa', 'aaaaaaaaaaa', NULL, NULL, 0),
-(67777777, 'wewew', 'ewewe', 'ewe', 1, '67777777', NULL, 'erer', 'erer', 'erer', NULL, NULL, 0),
-(72034061, 'sdsdsdsdsd', 'admsdsd', 'dsd', 3, '72034061', NULL, 'sdsd', 'sdsd', 'sdsd', NULL, NULL, 0),
-(99999999, 'fgh', 'fghj', 'ghj', 2, NULL, '99999999', 'hgjk', 'gfhjk', 'hgj', NULL, NULL, 0);
+(72034061, 'ADMINISTRADOR', 'ADMINISTRADOR', 'ADMINISTRADOR', 1, '72034061', NULL, '', '', '', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -310,20 +232,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`, `usuario_estado`) VALUES
-(2, 'luis', '$2y$10$zWVCuEica0WPxqqTHn7Q2.yKYBBHOFXqcAZyP3/b8mGYGmuugLx7G', 1, 1, 0),
-(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1, 0),
-(4, 'alumno', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 2, 1, 0),
-(6, 'docente', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 3, 1, 0),
-(9, 'bbb', '$2y$10$O94jgXbM5RMi0QFJA5d8qu31RjOa/aUCNdFM.OQ0uKYOEpk76gAhS', 1, 1, 0),
-(10, 'hola', '$2y$10$GRSPmlmVIdJICvUf2QGrvei4XcU1sL3pgqdiypA2tjGIMQilr80Uq', 3, 1, 0),
-(11, 'lolo', '$2y$10$yiP9rXSoTk/rpbwH04w/t.FQOJ3ZDO0Ald2fHEM3OSxXQhyuCjZZS', 1, 1, 0),
-(12, 'popo', '$2y$10$Q2BbZsK4qBBnl16eAeETvegX8LC.XK8EhDadftruXQ2RugU6z4Squ', 2, 1, 0),
-(13, '20123677', '$2y$10$BZKV77JpUXSkw7rzGMZGSeLLjrM05/4897E1oqFpMHcWom.DNVb4.', 2, 20123677, 0),
-(14, '72034061', '$2y$10$ufgJUp6t7lPIxiPhpb/YPOP.rVgS9HEVLCoyvvz9u/sUomWO7evXq', 3, 72034061, 0),
-(15, '1111111', '$2y$10$55D7L6fIx1V0gSNexJXvReBJOO.iPKX5i24t9QIL0A1LOTL1DW80q', 1, 1111111, 0),
-(16, '66666666', '$2y$10$UfhawFgN1WaVLe3AQxkaeuyJnEY56N5mUJgery/FvDkJR3ImSW4Eq', 1, 66666666, 0),
-(17, '67777777', '$2y$10$zlWLplJGHONk22J93TNl9eV6NpC2q4vdnXH6ulEz8Pkd2h3Ge6ngO', 1, 67777777, 0),
-(18, '99999999', '$2y$10$Bnt/xm7GZLY.6idKCQAK0eV8kDYkx8lshqqPmPNv24JPnT7kN8Zty', 2, 99999999, 0);
+(36, '72034061', '$2y$10$AIJr66Tvp8gPkRDexwkuoOmlGaOh1.Yi5P34cj63g4qYEblLuINBe', 1, 72034061, 0);
 
 --
 -- Índices para tablas volcadas
@@ -447,13 +356,13 @@ ALTER TABLE `alumno_curso`
 -- AUTO_INCREMENT de la tabla `comentarios_docente`
 --
 ALTER TABLE `comentarios_docente`
-  MODIFY `comentarios_docente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comentarios_docente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `docente_curso`
@@ -471,13 +380,13 @@ ALTER TABLE `libro`
 -- AUTO_INCREMENT de la tabla `malla_curricular`
 --
 ALTER TABLE `malla_curricular`
-  MODIFY `malla_curricular_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `malla_curricular_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `nota_promedio`
 --
 ALTER TABLE `nota_promedio`
-  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
@@ -507,7 +416,7 @@ ALTER TABLE `tipo_persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Restricciones para tablas volcadas
