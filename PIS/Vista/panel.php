@@ -97,12 +97,9 @@ if($_SESSION['rol']==1){
                                 <li>
                                     <a href="notasVista.php?c=notas&a=Nuevo">Agregar Notas</a>
                                 </li>
-<<<<<<< HEAD
                                  <li>
                                     <a href="notasVista.php?c=notas&a=estadistico">Datos Estadisticos</a>
                                 </li>
-=======
->>>>>>> 7de0671722bb6285450a92891a6b19ff502052c3
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

@@ -52,7 +52,6 @@ class NotasController{
 
     }
 
-<<<<<<< HEAD
     public function estadistico(){
         $pvd = new notas();
 
@@ -62,8 +61,6 @@ class NotasController{
     }    
 
 
-=======
->>>>>>> 7de0671722bb6285450a92891a6b19ff502052c3
     //Método que registrar al modelo un nuevo proveedor.
     public function Guardar(){
         $pvd = new notas();
