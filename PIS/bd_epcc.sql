@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2018 a las 02:20:49
--- Versión del servidor: 10.1.29-MariaDB
--- Versión de PHP: 7.2.0
+-- Tiempo de generación: 13-07-2018 a las 07:29:05
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,6 +33,20 @@ CREATE TABLE `alumno_curso` (
   `alumno_cursoc_alumno_id` int(11) NOT NULL,
   `alumno_curso_curso_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios_docente`
+--
+
+CREATE TABLE `comentarios_docente` (
+  `comentarios_docente_id` int(11) NOT NULL,
+  `comentarios_docente_docente_id` int(11) NOT NULL,
+  `comentarios_docente_alumno_id` int(11) NOT NULL,
+  `comentarios_docente_comentario` longtext NOT NULL,
+  `comentarios_docente_fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -90,13 +104,6 @@ CREATE TABLE `malla_curricular` (
   `malla_curricular_anio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `malla_curricular`
---
-
-INSERT INTO `malla_curricular` (`malla_curricular_id`, `malla_curricular_dsc`, `malla_curricular_anio`) VALUES
-(1, 'malla', 2018);
-
 -- --------------------------------------------------------
 
 --
@@ -105,9 +112,9 @@ INSERT INTO `malla_curricular` (`malla_curricular_id`, `malla_curricular_dsc`, `
 
 CREATE TABLE `nota_promedio` (
   `nota_promedio_id` int(11) NOT NULL,
-  `nota_promedio_alumno_id` int(11) DEFAULT NULL,
-  `nota_promedio_semestre` int(11) DEFAULT NULL,
-  `nota_promedio_nota` varchar(45) DEFAULT NULL
+  `nota_promedio_alumno_id` int(11) NOT NULL,
+  `nota_promedio_semestre` int(11) NOT NULL,
+  `nota_promedio_nota` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -127,16 +134,17 @@ CREATE TABLE `persona` (
   `persona_direccion` varchar(50) DEFAULT NULL,
   `persona_email` varchar(50) DEFAULT NULL,
   `persona_telefono` varchar(12) DEFAULT NULL,
-  `persona_malla` int(11) NOT NULL,
-  `persona_seccion` varchar(10) DEFAULT NULL
+  `persona_malla` int(11) DEFAULT NULL,
+  `persona_seccion` varchar(10) DEFAULT NULL,
+  `persona_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `persona_apellido2`, `persona_tipo_id`, `persona_dni`, `persona_cui`, `persona_direccion`, `persona_email`, `persona_telefono`, `persona_malla`, `persona_seccion`) VALUES
-(1, 'Luis', 'Jimenez', 'Gonzales', 1, '47695825', '20120867', 'Ultimo paradero del Viento', 'luisjimgon@unsa.edu.pe', '977645852', 1, 'A');
+INSERT INTO `persona` (`persona_id`, `persona_nombres`, `persona_apellido1`, `persona_apellido2`, `persona_tipo_id`, `persona_dni`, `persona_cui`, `persona_direccion`, `persona_email`, `persona_telefono`, `persona_malla`, `persona_seccion`, `persona_estado`) VALUES
+(72034061, 'ADMINISTRADOR', 'ADMINISTRADOR', 'ADMINISTRADOR', 1, '72034061', NULL, '', '', '', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -169,7 +177,9 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`rol_id`, `rol_descripcion`) VALUES
-(1, 'Administrador');
+(1, 'Administrador'),
+(2, 'Alumno'),
+(3, 'Profesor');
 
 -- --------------------------------------------------------
 
@@ -198,7 +208,9 @@ CREATE TABLE `tipo_persona` (
 --
 
 INSERT INTO `tipo_persona` (`tipo_persona_id`, `tipo_persona_dsc`) VALUES
-(1, 'Alumno');
+(1, 'Administrador'),
+(2, 'Alumno'),
+(3, 'Profesor');
 
 -- --------------------------------------------------------
 
@@ -211,16 +223,16 @@ CREATE TABLE `usuario` (
   `usuario_cuenta` varchar(20) NOT NULL,
   `usuario_password` varchar(100) NOT NULL,
   `usuario_rol_id` int(11) NOT NULL,
-  `usuario_persona_id` int(11) NOT NULL
+  `usuario_persona_id` int(11) NOT NULL,
+  `usuario_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`) VALUES
-(2, 'luis', '$2y$10$zWVCuEica0WPxqqTHn7Q2.yKYBBHOFXqcAZyP3/b8mGYGmuugLx7G', 1, 1),
-(3, 'admin', '$2y$10$6nN5d5beEEEPKl0B8i0n3.AWWoHW8FVmfkM94ROm8mgcbV9gd1lSC', 1, 1);
+INSERT INTO `usuario` (`usuario_id`, `usuario_cuenta`, `usuario_password`, `usuario_rol_id`, `usuario_persona_id`, `usuario_estado`) VALUES
+(36, '72034061', '$2y$10$AIJr66Tvp8gPkRDexwkuoOmlGaOh1.Yi5P34cj63g4qYEblLuINBe', 1, 72034061, 0);
 
 --
 -- Índices para tablas volcadas
@@ -234,6 +246,15 @@ ALTER TABLE `alumno_curso`
   ADD UNIQUE KEY `alumno_curso_id_UNIQUE` (`alumno_curso_id`),
   ADD KEY `fk_alumno_curso_persona_idx` (`alumno_cursoc_alumno_id`),
   ADD KEY `fk_alumno_curso_curso_idx` (`alumno_curso_curso_id`);
+
+--
+-- Indices de la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  ADD PRIMARY KEY (`comentarios_docente_id`),
+  ADD UNIQUE KEY `comentarios_docente_id_UNIQUE` (`comentarios_docente_id`),
+  ADD KEY `fk_comentarios_docente_idx` (`comentarios_docente_docente_id`),
+  ADD KEY `fk_comentarios_alumno_idx` (`comentarios_docente_alumno_id`);
 
 --
 -- Indices de la tabla `curso`
@@ -332,10 +353,16 @@ ALTER TABLE `alumno_curso`
   MODIFY `alumno_curso_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  MODIFY `comentarios_docente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `docente_curso`
@@ -353,13 +380,13 @@ ALTER TABLE `libro`
 -- AUTO_INCREMENT de la tabla `malla_curricular`
 --
 ALTER TABLE `malla_curricular`
-  MODIFY `malla_curricular_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `malla_curricular_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `persona`
+-- AUTO_INCREMENT de la tabla `nota_promedio`
 --
-ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `nota_promedio`
+  MODIFY `nota_promedio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
@@ -371,7 +398,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_libro`
@@ -383,13 +410,13 @@ ALTER TABLE `tipo_libro`
 -- AUTO_INCREMENT de la tabla `tipo_persona`
 --
 ALTER TABLE `tipo_persona`
-  MODIFY `tipo_persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tipo_persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Restricciones para tablas volcadas
@@ -401,6 +428,13 @@ ALTER TABLE `usuario`
 ALTER TABLE `alumno_curso`
   ADD CONSTRAINT `fk_alumno_curso_curso` FOREIGN KEY (`alumno_curso_curso_id`) REFERENCES `curso` (`curso_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_alumno_curso_persona` FOREIGN KEY (`alumno_cursoc_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `comentarios_docente`
+--
+ALTER TABLE `comentarios_docente`
+  ADD CONSTRAINT `fk_comentarios_alumno` FOREIGN KEY (`comentarios_docente_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_comentarios_docente` FOREIGN KEY (`comentarios_docente_docente_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `curso`
@@ -420,12 +454,6 @@ ALTER TABLE `docente_curso`
 --
 ALTER TABLE `libro`
   ADD CONSTRAINT `fk_libro_tipo_libro` FOREIGN KEY (`libro_tipo`) REFERENCES `tipo_libro` (`tipo_libro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `nota_promedio`
---
-ALTER TABLE `nota_promedio`
-  ADD CONSTRAINT `fk_nota_promedio_persona` FOREIGN KEY (`nota_promedio_alumno_id`) REFERENCES `persona` (`persona_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `persona`

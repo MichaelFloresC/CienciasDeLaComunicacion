@@ -4,6 +4,6 @@ session_start();
 unset ($SESSION['username']);
 session_destroy();
 
-header('Location: http://localhost/PIS/index.php');
+header('Location: ../index.php');
 
 ?>

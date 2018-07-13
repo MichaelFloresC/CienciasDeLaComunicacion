@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class usuarios_modelo{
 
@@ -13,17 +13,48 @@ class usuarios_modelo{
 
 		public function validar($username,$password){
 			
+			 $sql = "SELECT * FROM usuario JOIN persona ON usuario.usuario_cuenta=persona.persona_id WHERE usuario.usuario_cuenta = '$username'";
+			 $result = $this->db->query($sql);
+			// if ($result->num_rows > 0) {     
+			 //}
+
+	 		$row = $result->fetch_array(MYSQLI_ASSOC);
+			 if (password_verify($password, $row['usuario_password'])) { 
+	  		 	 $_SESSION['loggedin'] = true;
+				 $_SESSION['rol']= $row['usuario_rol_id'];
+	   			 $_SESSION['usuario_cuenta'] = $username;
+	   			 $_SESSION['persona_id'] = $row['usuario_persona_id'];
+	   			 $_SESSION['nombre_persona'] = $row['persona_nombres'];
+	   			 $_SESSION['usuario_id'] = $row['usuario_id'];
+	   			 $_SESSION['start'] = time();
+	  			 $_SESSION['expire'] = $_SESSION['start'] + (50 * 60);
+	  			 header('Location: Vista/bienvenida.php');
+	  			
+			 }
+
+			 else { 
+	  			echo "Usuario o contraseña incorrectos.";
+	  			
+	 		}
+	 		mysqli_close($this->db);
+	 	}
+
+	 	public function validarLogin($username,$password){
+			
 			 $sql = "SELECT * FROM usuario WHERE usuario_cuenta = '$username'";
 			 $result = $this->db->query($sql);
 			// if ($result->num_rows > 0) {     
 			 //}
+
 	 		$row = $result->fetch_array(MYSQLI_ASSOC);
 			 if (password_verify($password, $row['usuario_password'])) { 
-	  		 	 $_SESSION['loggedin'] = true;
-	   			 $_SESSION['usuario_cuenta'] = $username;
-	   			 $_SESSION['start'] = time();
-	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-	  			 header('Location: http://localhost/PIS/Vista/registroDocente_vista.php');
+	  		 	$_SESSION['loggedin'] = true;
+				 	$_SESSION['rol']= $row['usuario_rol_id'];
+	   			$_SESSION['usuario_cuenta'] = $username;
+	   			$_SESSION['start'] = time();
+	  			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+	  			// header('Location: Vista/bienvenida.php');
+	  			echo "Inicio de sesión correcto.";
 	  			
 			 }
 
