@@ -5,8 +5,6 @@ $tab_query = "SELECT * FROM malla_curricular";
 $tab_result = mysqli_query($connect, $tab_query);
 $tab_menu = '';
 $tab_content = '';
-$xx='';
-$yy='';
 $i = 0;
 while($row = mysqli_fetch_array($tab_result))
 {
@@ -28,20 +26,24 @@ while($row = mysqli_fetch_array($tab_result))
    <div id="'.$row["malla_curricular_id"].'" class="tab-pane fade">
   ';
  }
- $xx=
  
  $product_query = "SELECT * FROM curso WHERE curso_malla_id = '".$row["malla_curricular_id"]."'";
  $product_result = mysqli_query($connect, $product_query);
+ $j=1;
  while($sub_row = mysqli_fetch_array($product_result))
  {
   $tab_content .= '
                                 <table>
 								        <tr>
+											<td>('.$j.')_</td>
                                             <td>'.$sub_row["curso_codigo"].' </td>
+											<td>-</td>
                                             <td>'.$sub_row["curso_descripcion"].' </td>
                                         </tr>
+										<br>
                                 </table>
   ';
+  $j++;
  }
  $tab_content .= '<div style="clear:both"></div></div>';
  $i++;
