@@ -62,8 +62,8 @@ class comentar
 		{
 			$result = array();
 			//Sentencia SQL para selección de datos.
-			$stm = $this->pdo->prepare("SELECT * from  comentarios_docente JOIN persona on comentarios_docente.comentarios_docente_comentar_id = persona.persona_id
-										WHERE comentarios_docente.comentarios_docente_comentar_id={$comentarios_docente_comentar_id}");
+			$stm = $this->pdo->prepare("SELECT * from  comentarios_docente JOIN persona on comentarios_docente.comentarios_docente_docente_id = persona.persona_id
+										WHERE comentarios_docente.comentarios_docente_alumno_id={$comentarios_docente_comentar_id}");
 			//Ejecución de la sentencia SQL.
 			$stm->execute();
 			//fetchAll — Devuelve un array que contiene todas las filas del conjunto

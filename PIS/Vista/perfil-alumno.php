@@ -53,11 +53,11 @@
                         <!-- .panel-heading -->
                         <div class="panel-body">
                             <div class="panel-group" id="accordion">
-                                <?php foreach($this->model->Listare($pvd->persona_id) as $r): ?>
+                                <?php foreach($this->modeloo->Listare($pvd->persona_id) as $r): ?>
 								<div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_docente_id; ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->persona_nombres; ?> <?php echo $r->persona_apellido1; ?></a>
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><?php echo $r->comentarios_docente_fecha; ?></a>
                                         </h4>
                                     </div>

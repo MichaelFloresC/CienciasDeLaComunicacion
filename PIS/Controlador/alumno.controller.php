@@ -3,6 +3,7 @@
 require_once '../Modelo/alumno.php';
 require_once '../Modelo/usuario.php';
 require_once '../Modelo/database.php';
+require_once '../Modelo/comentar.php';
 
 
 if(isset($_POST['id_usuario'])) {
@@ -18,10 +19,12 @@ if(isset($_POST['id_usuario'])) {
 class AlumnoController{
 
     private $model;
+    private $modeloo;
 
     //Creación del modelo
     public function __CONSTRUCT(){
         $this->model = new alumno();
+        $this->modeloo = new comentar();
     }
 
     //Llamado plantilla principal
