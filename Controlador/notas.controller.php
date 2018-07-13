@@ -79,7 +79,7 @@ class NotasController{
         //"Location:" No solamente envía el encabezado al navegador, sino que
         //también devuelve el código de status (302) REDIRECT al
         //navegador
-        header('Location: ../Vista/notasVista.php?c=notas&a=Nuevo');
+        header('Location: ../Vista/notasVista.php?c=notas&a=estadistico');
     }
 
     //Método que modifica el modelo de un proveedor.
