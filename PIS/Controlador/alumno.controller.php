@@ -127,7 +127,7 @@ class AlumnoController{
     public function GuardarArchivo(){
         $pvd = new alumno();
 		$pc2 = new usuario();
-		$hash = password_hash($_REQUEST['persona_cui'], PASSWORD_BCRYPT);
+		
 
         $tipo = $_FILES['archivo']['type'];
         $tamanio = $_FILES['archivo']['size'];
@@ -137,6 +137,7 @@ class AlumnoController{
         foreach ($lineas as $linea_num => $linea) { 
             if($i != 0) { 
                 $datos = explode(",",$linea);
+				$hash = password_hash($datos[4], PASSWORD_BCRYPT);
                 $pvd->persona_id = $datos[4];
                 $pvd->persona_nombres = utf8_encode($datos[0]);
                 $pvd->persona_apellido1 = utf8_encode($datos[1]);
@@ -151,7 +152,7 @@ class AlumnoController{
         $pc2->usuario_password = $hash;
         $pc2->usuario_rol_id = 2;
 		$pc2->usuario_persona_id = $datos[4];
-        $pc2->usuario_estado = $datos[8];
+        $pc2->usuario_estado = 0;
                 $this->model->Registrar($pvd);
         $this->model->RegistrarU($pc2);
 

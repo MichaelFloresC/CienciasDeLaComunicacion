@@ -18,7 +18,7 @@
 				<div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Edicion de Alumnos
+                            Comentario al Alumno(a) <label><?php echo $pvd->persona_nombres; ?> </label>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -26,7 +26,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="Formulario">
 									<form role="form" id="frm-alumno" action="?c=comentar&a=EnviarComentario" method="post" enctype="multipart/form-data">
-										<label><?php echo $pvd->persona_nombres; ?></label>
+										
                                         <input class="form-control" type="hidden" name="persona_cui" value="<?php echo $pvd->persona_id; ?>">
                                         <input class="form-control" type="hidden" name="usuario_persona_id" value="<?php echo $_SESSION['persona_id']; ?>">
                                         

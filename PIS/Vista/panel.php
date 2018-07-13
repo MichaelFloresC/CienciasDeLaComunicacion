@@ -90,16 +90,7 @@ if($_SESSION['rol']==1){
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						<!-- /Malla Curricular -->		
-						<li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="lista-usuarios.php">Lista</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
 						<li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Notas<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
@@ -172,7 +163,7 @@ if($_SESSION['rol']==2){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="lista-malla.php">Malla</a>
+                                    <a href="Accion.php?c=malla&a=Listar">Lista</a>
                                 </li>
 
                             </ul>
@@ -239,7 +230,7 @@ if($_SESSION['rol']==3){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="lista-malla.php">Lista</a>
+                                    <a href="Accion.php?c=malla&a=Listar">Lista</a>
                                 </li>
 								
 

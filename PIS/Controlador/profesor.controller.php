@@ -85,7 +85,8 @@ class ProfesorController{
 
     public function GuardarArchivo(){
         $pvd = new profesor();
-
+		$pc2 = new usuario();
+		
         $tipo = $_FILES['archivo']['type'];
         $tamanio = $_FILES['archivo']['size'];
         $archivotmp = $_FILES['archivo']['tmp_name'];
@@ -94,6 +95,7 @@ class ProfesorController{
         foreach ($lineas as $linea_num => $linea) { 
             if($i != 0) { 
                 $datos = explode(",",$linea);
+				$hash = password_hash($datos[4], PASSWORD_BCRYPT);
 				$pvd->persona_id = $datos[4];
                 $pvd->persona_nombres = utf8_encode($datos[0]);
                 $pvd->persona_apellido1 = utf8_encode($datos[1]);
@@ -104,8 +106,14 @@ class ProfesorController{
                 $pvd->persona_email = utf8_encode($datos[6]);
                 $pvd->persona_telefono = $datos[7];
                 $pvd->persona_estado = $datos[8];
-
+        $pc2->usuario_cuenta = $datos[4];
+        $pc2->usuario_password = $hash;
+        $pc2->usuario_rol_id = 3;
+		$pc2->usuario_persona_id = $datos[4];
+        $pc2->usuario_estado = $datos[8];
+        
                 $this->model->Registrar($pvd);
+						$this->model->RegistrarU($pc2);
             }
                 $i++;
         }
