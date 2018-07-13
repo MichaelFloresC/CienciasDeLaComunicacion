@@ -80,7 +80,7 @@ class ComentarController{
         //"Location:" No solamente envía el encabezado al navegador, sino que
         //también devuelve el código de status (302) REDIRECT al
         //navegador
-        header('Location: ../Vista/comentarVista.php');
+        header('Location: ../Vista/alumnoVista.php');
     }
 
     //Método que modifica el modelo de un proveedor.
@@ -105,7 +105,7 @@ class ComentarController{
     //Método que elimina la tupla proveedor con el nit dado.
     public function Eliminar(){
         $this->model->Eliminar($_REQUEST['persona_id']);
-        header('Location: ../Vista/comentarVista.php');
+        header('Location: ../Vista/alumnoVista.php');
     }
 
     public function GuardarArchivo(){
@@ -134,7 +134,7 @@ class ComentarController{
             $i++;
         }
 
-        header('Location: ../Vista/comentarVista.php');
+        header('Location: ../Vista/alumnoVista.php');
     }
 
 }

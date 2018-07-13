@@ -32,11 +32,11 @@
                                         
 										<div class="form-group col-lg-6">
                                             <label>Comentario</label>
-                                            <input class="form-control" name="comentarios_docente_comentario" placeholder="Ingrese CUI">
+                                            <input class="form-control" name="comentarios_docente_comentario" placeholder="Ingrese Comentario">
                                         </div>
 										<br>
 										<div class="col-lg-12">
-											<button type="submit" class="btn btn-default ">Actualizar</button>
+											<button type="submit" class="btn btn-default ">Comentar</button>
 											<button type="reset" class="btn btn-default">Reset</button>
 										</div>
                                     </form>
