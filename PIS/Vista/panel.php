@@ -163,7 +163,7 @@ if($_SESSION['rol']==2){
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 						<li>
-                            <a href="perfil-alumno.php"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
+                            <a href="../Vista/alumnoVista.php?c=alumno&a=Perfil&persona_id=<?php echo $_SESSION['persona_id']; ?>"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
                         </li>
 											
 						
