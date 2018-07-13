@@ -10,7 +10,9 @@
 	<div class="row"><br><br><br><br><br><br><br>
         <div class="col-md-offset-1">
 			<h4 style="border-bottom: 1px solid #c5c5c5;">
-				<center>Bienvenido al panel</center>
+				<center>Bienvenido al panel <?php
+							echo "<h4>" . $_SESSION['nombre_persona']."</h4>";
+						?> </center>
 			</h4>
 		</div>
 	</div>
