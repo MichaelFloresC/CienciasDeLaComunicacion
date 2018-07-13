@@ -24,6 +24,7 @@ class usuarios_modelo{
 				 $_SESSION['rol']= $row['usuario_rol_id'];
 	   			 $_SESSION['usuario_cuenta'] = $username;
 	   			 $_SESSION['persona_id'] = $row['usuario_persona_id'];
+	   			 $_SESSION['usuario_id'] = $row['usuario_id'];
 	   			 $_SESSION['start'] = time();
 	  			 $_SESSION['expire'] = $_SESSION['start'] + (50 * 60);
 	  			 header('Location: Vista/bienvenida.php');
