@@ -13,7 +13,7 @@ class usuarios_modelo{
 
 		public function validar($username,$password){
 			
-			 $sql = "SELECT * FROM usuario WHERE usuario_cuenta = '$username'";
+			 $sql = "SELECT * FROM usuario JOIN persona ON usuario.usuario_cuenta=persona.persona_id WHERE usuario.usuario_cuenta = '$username'";
 			 $result = $this->db->query($sql);
 			// if ($result->num_rows > 0) {     
 			 //}

@@ -42,6 +42,13 @@
                                                 }
                                             ?>
                                             <th>Ver</th>
+											<?php
+                                                if($_SESSION['rol']==3){
+                                            ?>
+                                            <th>Comentar</th>
+                                            <?php
+                                                }
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,9 +64,16 @@
                                             <td class="center"><a href="?c=alumno&a=Crud&persona_id=<?php echo $r->persona_id; ?>">Editar</a></td>
                                             <td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=alumno&a=Eliminar&persona_id=<?php echo $r->persona_id; ?>">Eliminar</a></td>
                                             <?php
-                                                }
+                                            }
                                             ?>
                                             <td class="center"><a href="?c=alumno&a=Perfil&persona_id=<?php echo $r->persona_id; ?>">Ver</a></td>
+											<?php
+                                                if($_SESSION['rol']==3){
+                                            ?>
+                                            <td class="center"><a href="../Vista/Accion.php?c=comentar&a=comentario&persona_id=<?php echo $r->persona_id; ?>">Comentar</a></td>
+                                            <?php
+                                            }
+                                            ?>
                                         </tr>                                        
                                     <?php endforeach; ?>    
                                     </tbody>
