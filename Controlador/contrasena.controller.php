@@ -20,13 +20,6 @@ class ContrasenaController{
     //Llamado a la vista alumno-editar
     public function CambiarContrasena(){
         $pvd = new contrasena();
-
-        //Se obtienen los datos del alumno a editar.
-        if(isset($_REQUEST['usuario_id'])){
-            $pvd = $this->model->Obtener($_REQUEST['usuario_id']);
-        }
-
-        //Llamado de las vistas.
         require_once '../Vista/Contrasena/cambio-contrasena.php';
   }
     //Método que modifica el modelo de un proveedor.

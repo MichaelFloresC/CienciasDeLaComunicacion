@@ -23,7 +23,7 @@ if($_SESSION['rol']==1){
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena&persona_id=<?php echo $_SESSION['usuario_id']; ?>"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
+                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
@@ -141,7 +141,7 @@ if($_SESSION['rol']==2){
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="../Vista/alumnoVista.php?c=alumno&a=Perfil&persona_id=<?php echo $_SESSION['persona_id']; ?>"><i class="fa fa-user fa-fw"></i> Perfil</a>
                         </li>
-                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena&persona_id=<?php echo $_SESSION['usuario_id']; ?>"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
+                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
@@ -208,7 +208,7 @@ if($_SESSION['rol']==3){
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena&persona_id=<?php echo $_SESSION['usuario_id']; ?>"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
+                        <li><a href="../Vista/Accion.php?c=contrasena&a=CambiarContrasena"><i class="fa fa-gear fa-fw"></i> Cambiar Contraseña</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
